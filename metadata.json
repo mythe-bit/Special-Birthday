@@ -1,0 +1,6 @@
+{
+  "name": "Romantic Birthday Celebration",
+  "description": "A romantic, interactive birthday website featuring a secure PIN lockscreen, aesthetic photo collage, personal love letter, quiz challenge, and surprise video finale.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

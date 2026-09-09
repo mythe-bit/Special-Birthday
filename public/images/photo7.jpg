@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+    <defs>
+      <linearGradient id="g7" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fce4ec" />
+        <stop offset="100%" stop-color="#f48fb1" />
+      </linearGradient>
+      <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="rgba(0,0,0,0.15)" />
+      </filter>
+    </defs>
+    <rect width="600" height="800" fill="url(#g7)" />
+    <circle cx="300" cy="340" r="140" fill="rgba(255,255,255,0.45)" filter="url(#shadow)" />
+    <path d="M 300, 390 C 260, 320 200, 300 200, 240 C 200, 190 240, 160 280, 180 C 290, 185 300, 200 300, 200 C 300, 200 310, 185 320, 180 C 360, 160 400, 190 400, 240 C 400, 300 340, 320 300, 390 Z" fill="#ad1457" opacity="0.8" />
+    <text x="300" y="540" font-family="Playfair Display, Georgia, serif" font-size="34" font-weight="bold" fill="#2d2429" text-anchor="middle">Sweetest Laughs 😊</text>
+    <text x="300" y="590" font-family="Poppins, sans-serif" font-size="20" fill="#66505b" text-anchor="middle">Memory #7 • Our Special Moments</text>
+    <text x="300" y="630" font-family="Poppins, sans-serif" font-size="14" fill="#9e7b89" text-anchor="middle">(Replace with images/photo7.jpg)</text>
+  </svg>
