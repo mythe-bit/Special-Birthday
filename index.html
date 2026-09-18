@@ -993,6 +993,145 @@
       background: var(--blush);
       transform: translateY(-2px);
     }
+
+    /* ==========================================================================
+       LOVE BLAST & FLOATING TEXT WAVES AT BOTTOM
+       ========================================================================== */
+    .love-wave-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 120;
+      overflow: hidden;
+    }
+
+    .love-wave-ribbon {
+      position: absolute;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 24px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 2px solid rgba(224, 36, 56, 0.35);
+      box-shadow: 0 10px 30px rgba(224, 36, 56, 0.28);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 19px;
+      color: var(--primary-red);
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .love-wave-ribbon.style-pink {
+      background: linear-gradient(135deg, rgba(255, 240, 243, 0.97), rgba(255, 214, 224, 0.97));
+      color: var(--deep-red);
+      border-color: #ff758f;
+    }
+
+    .love-wave-ribbon.style-red {
+      background: linear-gradient(135deg, #ff4d6d, #e02438);
+      color: #ffffff;
+      border-color: #ffe5ec;
+      box-shadow: 0 14px 38px rgba(224, 36, 56, 0.45);
+    }
+
+    .love-wave-ribbon.style-gold {
+      background: linear-gradient(135deg, #fffdf2, #fff0f3);
+      color: #9c1020;
+      border-color: #e5a93b;
+    }
+
+    .love-wave-ribbon.anim-ltr {
+      animation: waveFloatLtoR linear forwards;
+    }
+
+    .love-wave-ribbon.anim-rtl {
+      animation: waveFloatRtoL linear forwards;
+    }
+
+    @keyframes waveFloatLtoR {
+      0% {
+        opacity: 0;
+        transform: translate3d(-20vw, 25px, 0) scale(0.85);
+      }
+      8% {
+        opacity: 1;
+        transform: translate3d(2vw, -20px, 0) scale(1);
+      }
+      30% {
+        transform: translate3d(28vw, 30px, 0) scale(1.05);
+      }
+      55% {
+        transform: translate3d(55vw, -30px, 0) scale(1.08);
+      }
+      80% {
+        transform: translate3d(82vw, 20px, 0) scale(1.02);
+      }
+      92% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(115vw, -25px, 0) scale(0.9);
+      }
+    }
+
+    @keyframes waveFloatRtoL {
+      0% {
+        opacity: 0;
+        transform: translate3d(115vw, -20px, 0) scale(0.85);
+      }
+      8% {
+        opacity: 1;
+        transform: translate3d(90vw, 25px, 0) scale(1);
+      }
+      40% {
+        transform: translate3d(55vw, -30px, 0) scale(1.06);
+      }
+      70% {
+        transform: translate3d(25vw, 25px, 0) scale(1.04);
+      }
+      92% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(-20vw, -20px, 0) scale(0.9);
+      }
+    }
+
+    .finale-badge-completed {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #fff0f3 0%, #ffe5ec 100%);
+      border: 1.5px dashed var(--primary-red);
+      color: var(--deep-red);
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      font-weight: 700;
+      padding: 6px 24px;
+      border-radius: 9999px;
+      margin-bottom: 20px;
+      animation: heartbeatGlow 2.5s infinite;
+    }
+
+    .finale-card.glowing-love {
+      animation: finaleLoveGlow 2.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes finaleLoveGlow {
+      0% {
+        box-shadow: 0 25px 70px rgba(224, 36, 56, 0.25), 0 0 0 0 rgba(224, 36, 56, 0.4);
+      }
+      100% {
+        box-shadow: 0 35px 95px rgba(224, 36, 56, 0.45), 0 0 35px 6px rgba(255, 77, 109, 0.55);
+      }
+    }
   </style>
 </head>
 <body>
@@ -1007,6 +1146,9 @@
 
   <!-- Rising Floating Red Hearts Container -->
   <div class="floating-hearts-container" id="floatingHeartsContainer"></div>
+
+  <!-- Floating "I Love You" Waves & Love Blast Overlay -->
+  <div class="love-wave-container" id="loveWaveContainer"></div>
 
   <!-- Top-Right Floating Music Bar (YouTube Songs: 1 & 2) -->
   <aside class="music-bar-widget" id="musicWidget" title="Click to toggle YouTube background music">
@@ -1040,7 +1182,7 @@
       <div class="lock-heart-badge">❤️</div>
       <h1 class="lock-heading">Happy Birthday!</h1>
       <div class="lock-for-tisha">Special Surprise for Tisha 🌹</div>
-      <p class="lock-prompt">Bolo to babuu pasword ki hote paree</p>
+      <p class="lock-prompt">Enter Password</p>
 
       <!-- 4-Digit Input Fields -->
       <div class="pin-boxes-row" id="pinBoxGroup">
@@ -1123,8 +1265,9 @@
       <!-- ====================================================================
            GRAND FINALE CARD (AT END OF 52 PHOTOS)
            ==================================================================== -->
-      <section class="finale-card-section">
-        <div class="finale-card">
+      <section class="finale-card-section" id="finaleCardSection">
+        <div class="finale-card" id="finaleCard">
+          <div class="finale-badge-completed">🌹 All 52 Memories Completed With All My Love 🌹</div>
           <div class="finale-heart-icon">💖</div>
           <h2 class="finale-title">I Love You So Much, Tisha!</h2>
           <p class="finale-text">
@@ -1133,7 +1276,7 @@
           </p>
           <div class="finale-btn-group">
             <button class="celebrate-again-btn" id="blastConfettiBtn">
-              <span>Blast Confetti For Tisha! 🎉</span>
+              <span>Replay Love Blast! 💖✨</span>
             </button>
             <button class="back-to-top-btn" id="backToTopBtn">
               <span>Back to Top 💌</span>
@@ -1232,7 +1375,8 @@
       currentSongIndex: 0,
       isPlayingMusic: false,
       ytPlayer: null,
-      ytReady: false
+      ytReady: false,
+      bottomBlastTriggered: false
     };
 
     /* ==========================================================================
@@ -1246,6 +1390,7 @@
       initScrollProgress();
       initInteractiveClicks();
       initYouTubeAPI();
+      initBottomLoveBlastObserver();
     });
 
     function initContent() {
@@ -1273,9 +1418,9 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
-      // Blast confetti
+      // Replay love blast & confetti button
       document.getElementById("blastConfettiBtn").addEventListener("click", () => {
-        fireBigLoveConfetti();
+        triggerUltimateLoveBlast();
       });
     }
 
@@ -1683,28 +1828,222 @@
     }
 
     /* ==========================================================================
+       BOTTOM REACH DETECTION & ULTIMATE LOVE BLAST
+       Automatically triggers when Tisha reaches the bottom of the page!
+       ========================================================================== */
+    function initBottomLoveBlastObserver() {
+      const finaleSection = document.getElementById("finaleCardSection");
+      if (!finaleSection) return;
+
+      // 1. Intersection Observer for accurate detection
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !appState.bottomBlastTriggered && appState.isUnlocked) {
+              appState.bottomBlastTriggered = true;
+              triggerUltimateLoveBlast();
+            }
+          });
+        }, {
+          root: null,
+          threshold: 0.2
+        });
+        observer.observe(finaleSection);
+      }
+
+      // 2. Scroll listener fallback to ensure it fires smoothly
+      window.addEventListener("scroll", () => {
+        if (appState.bottomBlastTriggered || !appState.isUnlocked) return;
+        const scrollBottom = window.innerHeight + window.scrollY;
+        const docHeight = document.documentElement.scrollHeight;
+        if (scrollBottom >= docHeight - 350) {
+          appState.bottomBlastTriggered = true;
+          triggerUltimateLoveBlast();
+        }
+      }, { passive: true });
+    }
+
+    function triggerUltimateLoveBlast() {
+      // Glow up the finale card
+      const finaleCard = document.getElementById("finaleCard");
+      if (finaleCard) {
+        finaleCard.classList.remove("glowing-love");
+        void finaleCard.offsetWidth; // trigger reflow
+        finaleCard.classList.add("glowing-love");
+      }
+
+      // Celestial dreamy chimes
+      playRomanticChimeSound();
+
+      // Multi-stage fireworks & confetti cannons
+      fireSpectacularConfetti();
+
+      // Giant floating waves of love text
+      spawnLoveTextWaves();
+    }
+
+    /* Long flowing series of love text floating in rhythmic waves across the screen */
+    function spawnLoveTextWaves() {
+      const container = document.getElementById("loveWaveContainer");
+      if (!container) return;
+
+      // Clear any prior active waves
+      container.innerHTML = "";
+
+      const wavePhrases = [
+        "❤️ I love you, Tisha! ❤️",
+        "💕 I love you soooo much! 💕",
+        "💖 You are the best person I have met 💖",
+        "🌹 My whole heart belongs to you, always 🌹",
+        "✨ I love you ❤️ I love you ❤️ I love you ❤️ ✨",
+        "🥰 Forever & always yours, my love 💕",
+        "💫 You make my world so incredibly beautiful 💫",
+        "🌸 I choose you in every lifetime, Tisha ❤️",
+        "💌 You are pure magic, my sweetest babuu 💖",
+        "🎂 Happy Birthday to the girl of my dreams! 🌹",
+        "🌙 I love you to the moon & back a million times 🌟",
+        "🧸 My favorite smile in the whole universe 💕",
+        "❤️ I love you endlessly, Tisha! ❤️",
+        "💖 You are my safe space and my greatest joy ✨",
+        "🌹 Every single beat of my heart is for you 🌹",
+        "🥰 I love you so much, my favorite person! 💕",
+        "✨ Forever grateful for your precious love 💫",
+        "❤️ You are the love of my life, Tisha ❤️"
+      ];
+
+      const styles = ["style-pink", "style-red", "style-gold"];
+      const totalToSpawn = 26;
+
+      for (let i = 0; i < totalToSpawn; i++) {
+        setTimeout(() => {
+          const ribbon = document.createElement("div");
+          const phrase = wavePhrases[i % wavePhrases.length];
+          const styleClass = styles[i % styles.length];
+          const isLeftToRight = i % 2 === 0;
+
+          ribbon.className = `love-wave-ribbon ${styleClass} ${isLeftToRight ? 'anim-ltr' : 'anim-rtl'}`;
+          ribbon.textContent = phrase;
+
+          // Vertical placement across 8 tiers from top 7% to 88%
+          const topPercent = 7 + ((i * 13) % 80);
+          ribbon.style.top = topPercent + "vh";
+
+          // Duration between 7.5s and 11s
+          const duration = 7.5 + (Math.random() * 3.5);
+          ribbon.style.animationDuration = duration + "s";
+
+          container.appendChild(ribbon);
+
+          // Clean up element after animation finishes
+          setTimeout(() => {
+            ribbon.remove();
+          }, duration * 1000 + 400);
+        }, i * 320); // staggered by 320ms for continuous streaming waves
+      }
+    }
+
+    /* Multi-stage spectacular confetti fireworks */
+    function fireSpectacularConfetti() {
+      if (typeof confetti !== "function") return;
+
+      const loveColors = ['#e02438', '#ff2a4b', '#ff758f', '#ffccd5', '#ffffff', '#ffd700'];
+
+      // Center grand explosion
+      confetti({
+        particleCount: 160,
+        spread: 100,
+        origin: { y: 0.65 },
+        colors: loveColors,
+        scalar: 1.15
+      });
+
+      // Left cannon burst
+      setTimeout(() => {
+        confetti({
+          particleCount: 95,
+          angle: 60,
+          spread: 75,
+          origin: { x: 0, y: 0.75 },
+          colors: loveColors,
+          scalar: 1.2
+        });
+      }, 250);
+
+      // Right cannon burst
+      setTimeout(() => {
+        confetti({
+          particleCount: 95,
+          angle: 120,
+          spread: 75,
+          origin: { x: 1, y: 0.75 },
+          colors: loveColors,
+          scalar: 1.2
+        });
+      }, 500);
+
+      // Cascading shower from top
+      setTimeout(() => {
+        confetti({
+          particleCount: 130,
+          spread: 140,
+          origin: { y: 0.15 },
+          colors: loveColors,
+          decay: 0.94,
+          startVelocity: 30
+        });
+      }, 950);
+
+      // Additional celebratory heartbeat pop
+      setTimeout(() => {
+        confetti({
+          particleCount: 85,
+          spread: 80,
+          origin: { y: 0.6 },
+          colors: ['#e02438', '#ff4d6d', '#ffccd5']
+        });
+      }, 1600);
+    }
+
+    /* Soft, dreamy romantic chime chord (C5, E5, G5, B5, C6) */
+    function playRomanticChimeSound() {
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        const ctx = new AudioContextClass();
+        if (ctx.state === "suspended") {
+          ctx.resume();
+        }
+
+        const notes = [523.25, 659.25, 783.99, 987.77, 1046.50];
+        const now = ctx.currentTime;
+
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(freq, now + idx * 0.12);
+
+          gain.gain.setValueAtTime(0.001, now + idx * 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.065, now + idx * 0.12 + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.12 + 1.2);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(now + idx * 0.12);
+          osc.stop(now + idx * 0.12 + 1.3);
+        });
+      } catch (e) {
+        // Safe failover if Web Audio is prevented by autoplay policy
+      }
+    }
+
+    /* ==========================================================================
        CONFETTI CELEBRATIONS
        ========================================================================== */
     function fireBigLoveConfetti() {
-      if (typeof confetti === "function") {
-        const count = 250;
-        const defaults = {
-          origin: { y: 0.65 },
-          colors: ['#e02438', '#ff4d6d', '#ff758f', '#ffccd5', '#ffffff', '#e5a93b']
-        };
-
-        function fire(particleRatio, opts) {
-          confetti(Object.assign({}, defaults, opts, {
-            particleCount: Math.floor(count * particleRatio)
-          }));
-        }
-
-        fire(0.25, { spread: 30, startVelocity: 55 });
-        fire(0.2, { spread: 65 });
-        fire(0.35, { spread: 100, decay: 0.92, scalar: 0.9 });
-        fire(0.1, { spread: 130, startVelocity: 25, decay: 0.93, scalar: 1.2 });
-        fire(0.1, { spread: 120, startVelocity: 45 });
-      }
+      fireSpectacularConfetti();
     }
 
     // Helper to sanitize HTML strings
