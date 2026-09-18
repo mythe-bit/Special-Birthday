@@ -1,6 +1,6 @@
 {
-  "name": "Romantic Birthday Celebration",
-  "description": "A romantic, interactive birthday website featuring a secure PIN lockscreen, aesthetic photo collage, personal love letter, quiz challenge, and surprise video finale.",
+  "name": "Happy Birthday Tisha ❤️",
+  "description": "A cozy, romantic birthday website for Tisha featuring a secure PIN lockscreen, red hearts theme, background music, heartfelt letter, and a 52-photo love story scroll.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

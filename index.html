@@ -3,44 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Romantic Birthday Celebration</title>
-  <meta name="description" content="A romantic, interactive birthday website featuring a secure PIN lockscreen, aesthetic photo collage, personal love letter, quiz challenge, and surprise video finale." />
-  <meta property="og:title" content="Romantic Birthday Celebration" />
-  <meta property="og:description" content="A romantic, interactive birthday website featuring a secure PIN lockscreen, aesthetic photo collage, personal love letter, quiz challenge, and surprise video finale." />
+  <title>Happy Birthday Tisha ❤️</title>
+  <meta name="description" content="A cozy, romantic birthday celebration website for Tisha with 52 special memories, lovely songs, and endless red hearts." />
+  <meta property="og:title" content="Happy Birthday Tisha ❤️" />
+  <meta property="og:description" content="A cozy, romantic birthday celebration website for Tisha with 52 special memories, lovely songs, and endless red hearts." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Playfair Display, Caveat (Cute handwritten), and Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet" />
 
   <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <style>
     /* ==========================================================================
-       ROMANTIC COLOR PALETTE & DESIGN TOKENS
-       Rose Gold: #b76e79, Blush Pink: #fdf2f4, Soft Cream: #fcfbf7, Deep Charcoal: #1f1a1d
+       COZY RED HEARTS ROMANTIC THEME
        ========================================================================== */
     :root {
-      --rose-primary: #b76e79;
-      --rose-dark: #914f59;
-      --rose-deep: #753b44;
-      --rose-light: #fce7eb;
-      --rose-blush: #fdf2f4;
-      --rose-gold: #d49b9b;
-      --rose-gold-gradient: linear-gradient(135deg, #e4a5af 0%, #b76e79 50%, #8f4753 100%);
-      --gold-accent: #dfb15b;
-      --gold-light: #fbeecd;
-      --cream: #fcfbf7;
-      --cream-card: rgba(253, 248, 248, 0.88);
-      --charcoal: #1f1a1d;
-      --charcoal-soft: #4a3e45;
-      --charcoal-muted: #7d6e76;
-      --card-border: rgba(235, 194, 201, 0.45);
-      --shadow-soft: 0 12px 36px rgba(78, 32, 46, 0.09);
-      --shadow-elevated: 0 24px 60px rgba(58, 20, 32, 0.18);
+      --primary-red: #e02438;
+      --deep-red: #b31224;
+      --crimson: #c9184a;
+      --cherry: #ff2a4b;
+      --rose-pink: #ff758f;
+      --blush: #ffe5ec;
+      --cozy-cream: #fff8f8;
+      --warm-bg: #fff0f3;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --text-dark: #2b1e22;
+      --text-muted: #73535d;
+      --gold-accent: #e5a93b;
+      --heart-glow: 0 0 16px rgba(224, 36, 56, 0.45);
+      --shadow-cozy: 0 16px 40px rgba(179, 18, 36, 0.12);
+      --shadow-float: 0 22px 50px rgba(179, 18, 36, 0.2);
       --transition-smooth: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
@@ -53,8 +50,8 @@
 
     body {
       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--charcoal);
-      color: var(--charcoal);
+      background-color: var(--warm-bg);
+      color: var(--text-dark);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
@@ -65,288 +62,409 @@
       font-family: 'Playfair Display', Georgia, serif;
     }
 
-    .font-accent {
-      font-family: 'Cormorant Garamond', Georgia, serif;
+    .font-handwriting {
+      font-family: 'Caveat', cursive;
     }
 
-    /* Ambient floating hearts background */
-    .hearts-container {
+    .font-cursive {
+      font-family: 'Sacramento', cursive;
+    }
+
+    /* ==========================================================================
+       COZY RED HEARTS BACKGROUND (Red Hearts Everywhere!)
+       ========================================================================== */
+    .hearts-background-layer {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       pointer-events: none;
-      z-index: 15;
+      z-index: 1;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 20%, #fff5f7 0%, #ffe0e6 45%, #ffd1dc 100%);
+    }
+
+    /* Soft ambient red hearts pattern overlay */
+    .hearts-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 24 24'%3E%3Cpath fill='%23e02438' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+      background-size: 54px 54px;
+    }
+
+    /* Continuously rising floating red hearts */
+    .floating-hearts-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
       overflow: hidden;
     }
 
-    .floating-heart {
+    .red-heart {
       position: absolute;
-      bottom: -40px;
-      color: rgba(212, 155, 155, 0.45);
-      animation: floatUp 12s linear infinite;
+      bottom: -60px;
+      color: var(--primary-red);
+      font-size: 24px;
+      opacity: 0.7;
+      animation: floatHeartUp linear infinite;
       user-select: none;
+      will-change: transform, opacity;
+      filter: drop-shadow(0 4px 10px rgba(224, 36, 56, 0.3));
     }
 
-    @keyframes floatUp {
+    @keyframes floatHeartUp {
       0% {
-        transform: translateY(0) rotate(0deg) scale(0.7);
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.7);
         opacity: 0;
       }
-      15% {
-        opacity: 0.65;
+      10% {
+        opacity: 0.85;
       }
-      85% {
-        opacity: 0.65;
+      90% {
+        opacity: 0.85;
       }
       100% {
-        transform: translateY(-115vh) rotate(360deg) scale(1.1);
+        transform: translateY(-115vh) translateX(45px) rotate(35deg) scale(1.15);
         opacity: 0;
       }
     }
 
-    /* Floating Audio Player Toggle */
-    .audio-control-bar {
+    /* Interactive click heart */
+    .click-heart {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 99;
+      pointer-events: none;
+      z-index: 9999;
+      animation: clickPop 1.2s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+      filter: drop-shadow(0 4px 8px rgba(224, 36, 56, 0.4));
+    }
+
+    @keyframes clickPop {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
+      }
+      50% {
+        transform: translate(-50%, -100px) scale(1.3) rotate(-15deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -180px) scale(1.6) rotate(20deg);
+      }
+    }
+
+    /* ==========================================================================
+       TOP FLOATING MUSIC BAR (YOUTUBE SONGS: SONG 1 & SONG 2)
+       ========================================================================== */
+    .music-bar-widget {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 100;
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 16px;
-      background: rgba(253, 242, 244, 0.88);
+      gap: 12px;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--card-border);
+      border: 1.5px solid rgba(224, 36, 56, 0.25);
       border-radius: 9999px;
-      box-shadow: 0 8px 24px rgba(45, 16, 24, 0.15);
-      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(179, 18, 36, 0.16);
       transition: var(--transition-smooth);
       user-select: none;
     }
 
-    .audio-control-bar:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 12px 30px rgba(45, 16, 24, 0.22);
-      background: rgba(255, 255, 255, 0.95);
+    .music-bar-widget:hover {
+      box-shadow: 0 14px 36px rgba(179, 18, 36, 0.25);
+      transform: translateY(-2px);
+      background: #ffffff;
     }
 
-    .audio-bars {
+    .music-waves {
       display: flex;
       align-items: flex-end;
       gap: 3px;
-      height: 16px;
-      width: 18px;
+      height: 18px;
+      width: 20px;
     }
 
-    .audio-bar {
+    .music-wave {
       width: 3px;
-      background: var(--rose-primary);
-      border-radius: 2px;
+      background: var(--primary-red);
+      border-radius: 3px;
       height: 4px;
       transition: height 0.2s ease;
     }
 
-    .audio-control-bar.playing .audio-bar:nth-child(1) {
-      animation: soundWave 0.9s ease-in-out infinite alternate;
+    .music-bar-widget.is-playing .music-wave:nth-child(1) {
+      animation: soundDance 0.8s ease-in-out infinite alternate;
     }
-    .audio-control-bar.playing .audio-bar:nth-child(2) {
-      animation: soundWave 1.1s ease-in-out 0.2s infinite alternate;
+    .music-bar-widget.is-playing .music-wave:nth-child(2) {
+      animation: soundDance 1.1s ease-in-out 0.2s infinite alternate;
     }
-    .audio-control-bar.playing .audio-bar:nth-child(3) {
-      animation: soundWave 0.8s ease-in-out 0.4s infinite alternate;
+    .music-bar-widget.is-playing .music-wave:nth-child(3) {
+      animation: soundDance 0.7s ease-in-out 0.4s infinite alternate;
     }
-    .audio-control-bar.playing .audio-bar:nth-child(4) {
-      animation: soundWave 1.2s ease-in-out 0.1s infinite alternate;
+    .music-bar-widget.is-playing .music-wave:nth-child(4) {
+      animation: soundDance 1.2s ease-in-out 0.1s infinite alternate;
     }
 
-    @keyframes soundWave {
+    @keyframes soundDance {
       0% { height: 4px; }
-      100% { height: 16px; }
+      100% { height: 18px; }
     }
 
-    .audio-label {
+    .song-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .song-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary-red);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .song-title-text {
       font-size: 13px;
-      font-weight: 500;
-      color: var(--charcoal);
-      letter-spacing: 0.3px;
+      font-weight: 600;
+      color: var(--text-dark);
+      white-space: nowrap;
+      max-width: 140px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .music-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .music-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: var(--blush);
+      color: var(--primary-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: var(--transition-smooth);
+    }
+
+    .music-btn:hover {
+      background: var(--primary-red);
+      color: #fff;
+      transform: scale(1.08);
+    }
+
+    /* Hidden YouTube Player Iframe Container */
+    #ytPlayerContainer {
+      position: fixed;
+      top: -9999px;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
     }
 
     /* ==========================================================================
-       STAGE 1: THE LOCKSCREEN
+       TOP SCROLL PROGRESS INDICATOR
+       ========================================================================== */
+    .scroll-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(to right, #ff2a4b, #e02438, #b31224);
+      z-index: 101;
+      width: 0%;
+      transition: width 0.1s ease;
+      box-shadow: 0 0 10px rgba(224, 36, 56, 0.6);
+    }
+
+    /* ==========================================================================
+       STAGE 1: LOCKSCREEN (COZY RED HEARTS & PIN 1405)
        ========================================================================== */
     #lockscreen {
       position: fixed;
       inset: 0;
-      z-index: 80;
+      z-index: 90;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      background: radial-gradient(circle at 50% 40%, #2f2026 0%, #171114 100%);
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s ease, visibility 0.8s;
+      padding: 24px;
+      background: radial-gradient(circle at 50% 35%, #fff0f3 0%, #ffd6df 50%, #fca5b7 100%);
+      transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1), transform 0.85s ease, visibility 0.85s;
     }
 
-    #lockscreen.hidden-stage {
+    #lockscreen.hidden-lock {
       opacity: 0;
       visibility: hidden;
-      transform: scale(1.05);
+      transform: scale(1.04);
       pointer-events: none;
     }
 
     .lock-card {
       position: relative;
       width: 100%;
-      max-width: 440px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 24px;
-      padding: 44px 32px;
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+      max-width: 460px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 117, 143, 0.5);
+      border-radius: 32px;
+      padding: 48px 36px;
+      box-shadow: 0 25px 70px rgba(224, 36, 56, 0.22);
       text-align: center;
-      color: var(--cream);
+      color: var(--text-dark);
+      z-index: 5;
     }
 
-    .lock-emblem {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 24px auto;
+    /* Cute red heart envelope emblem */
+    .lock-heart-badge {
+      width: 86px;
+      height: 86px;
+      margin: 0 auto 20px auto;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(212, 155, 155, 0.25), rgba(183, 110, 121, 0.45));
-      border: 1px solid rgba(235, 194, 201, 0.5);
+      background: linear-gradient(135deg, #ff4d6d 0%, #e02438 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 30px rgba(183, 110, 121, 0.35);
-      animation: pulseGlow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 20px rgba(183, 110, 121, 0.25); transform: scale(1); }
-      100% { box-shadow: 0 0 35px rgba(223, 177, 91, 0.45); transform: scale(1.04); }
-    }
-
-    .lock-emblem svg {
-      width: 34px;
-      height: 34px;
-      color: #fce7eb;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-    }
-
-    .lock-title {
-      font-size: 28px;
-      font-weight: 600;
       color: #fff;
+      font-size: 42px;
+      box-shadow: 0 10px 28px rgba(224, 36, 56, 0.45);
+      animation: heartbeatGlow 2.2s ease-in-out infinite;
+    }
+
+    @keyframes heartbeatGlow {
+      0% { transform: scale(1); box-shadow: 0 8px 24px rgba(224, 36, 56, 0.35); }
+      15% { transform: scale(1.08); box-shadow: 0 12px 34px rgba(224, 36, 56, 0.55); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.05); }
+      60% { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+
+    .lock-heading {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary-red);
       margin-bottom: 8px;
-      letter-spacing: -0.3px;
     }
 
-    .lock-subtitle {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: 28px;
-      font-weight: 300;
+    .lock-for-tisha {
+      display: inline-block;
+      font-family: 'Caveat', cursive;
+      font-size: 26px;
+      color: var(--deep-red);
+      background: var(--blush);
+      padding: 3px 20px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      border: 1px dashed var(--rose-pink);
     }
 
-    .pin-input-group {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
+    .lock-prompt {
+      font-size: 14.5px;
+      color: var(--text-muted);
       margin-bottom: 24px;
     }
 
-    .pin-digit {
-      width: 54px;
-      height: 64px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1.5px solid rgba(255, 255, 255, 0.25);
-      border-radius: 14px;
+    /* 4-Digit Input Fields */
+    .pin-boxes-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .pin-digit-box {
+      width: 58px;
+      height: 68px;
+      background: #fff;
+      border: 2px solid rgba(224, 36, 56, 0.25);
+      border-radius: 18px;
       font-family: 'Poppins', sans-serif;
-      font-size: 28px;
-      font-weight: 600;
-      color: #fff;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary-red);
       text-align: center;
       outline: none;
       transition: var(--transition-smooth);
+      box-shadow: 0 4px 12px rgba(224, 36, 56, 0.06);
     }
 
-    .pin-digit:focus {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: var(--rose-gold);
-      box-shadow: 0 0 16px rgba(212, 155, 155, 0.45);
+    .pin-digit-box:focus {
+      border-color: var(--primary-red);
+      box-shadow: 0 0 20px rgba(224, 36, 56, 0.35);
       transform: translateY(-2px);
     }
 
-    .pin-digit.filled {
-      border-color: var(--gold-accent);
+    .pin-digit-box.filled {
+      border-color: var(--cherry);
+      background: #fffafa;
     }
 
-    /* Shake animation for incorrect PIN */
-    .shake-animation {
-      animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    /* Shake animation */
+    .shake-box {
+      animation: shakeHoriz 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
     }
 
-    @keyframes shake {
-      10%, 90% { transform: translate3d(-3px, 0, 0); }
-      20%, 80% { transform: translate3d(5px, 0, 0); }
+    @keyframes shakeHoriz {
+      10%, 90% { transform: translate3d(-4px, 0, 0); }
+      20%, 80% { transform: translate3d(6px, 0, 0); }
       30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
       40%, 60% { transform: translate3d(6px, 0, 0); }
     }
 
-    .pin-error-toast {
+    .lock-error-msg {
       min-height: 24px;
-      font-size: 13.5px;
-      color: #ff9ea8;
-      font-weight: 400;
+      font-size: 14px;
+      color: var(--deep-red);
+      font-weight: 500;
       margin-bottom: 16px;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
 
-    .pin-error-toast.visible {
+    .lock-error-msg.show {
       opacity: 1;
     }
 
-    .pin-hint-box {
+    .lock-hint-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px dashed rgba(235, 194, 201, 0.35);
-      border-radius: 12px;
-      padding: 10px 16px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 28px;
-      line-height: 1.4;
-      max-width: 100%;
+      background: var(--blush);
+      border: 1px dashed var(--primary-red);
+      border-radius: 14px;
+      padding: 9px 18px;
+      font-size: 13.5px;
+      color: var(--deep-red);
+      margin-bottom: 26px;
+      font-weight: 500;
     }
 
-    .pin-hint-box svg {
-      flex-shrink: 0;
-      width: 16px;
-      height: 16px;
-      color: var(--gold-accent);
-    }
-
-    .unlock-btn {
+    .lock-submit-btn {
       width: 100%;
-      padding: 15px 24px;
-      background: var(--rose-gold-gradient);
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #ff4d6d 0%, #e02438 60%, #b31224 100%);
       color: #fff;
       font-family: 'Poppins', sans-serif;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
       border: none;
-      border-radius: 14px;
+      border-radius: 18px;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(183, 110, 121, 0.4);
+      box-shadow: 0 12px 30px rgba(224, 36, 56, 0.45);
       transition: var(--transition-smooth);
       display: flex;
       align-items: center;
@@ -354,79 +472,309 @@
       gap: 10px;
     }
 
-    .unlock-btn:hover {
+    .lock-submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(183, 110, 121, 0.55);
-      filter: brightness(1.06);
+      box-shadow: 0 16px 36px rgba(224, 36, 56, 0.6);
+      filter: brightness(1.05);
     }
 
-    .unlock-btn:active {
+    .lock-submit-btn:active {
       transform: translateY(0);
     }
 
     /* ==========================================================================
-       STAGE 2: MAIN PAGE (AESTHETIC PHOTO COLLAGE + LOVE LETTER CARD)
+       MAIN CONTENT CONTAINER
        ========================================================================== */
-    #mainStage {
+    #mainApp {
       position: relative;
-      min-height: 100vh;
+      z-index: 10;
       width: 100%;
       opacity: 0;
       visibility: hidden;
       transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    #mainStage.visible-stage {
+    #mainApp.revealed {
       opacity: 1;
       visibility: visible;
     }
 
-    /* Fixed Background Collage Grid */
-    .collage-wrapper {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      overflow: hidden;
-      pointer-events: none;
+    .page-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 20px 140px 20px;
     }
 
-    .collage-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      width: 110vw;
-      height: 110vh;
-      margin: -5vh -5vw;
-      padding: 20px;
-      transform: rotate(-2deg) scale(1.02);
-      filter: blur(2px);
-      opacity: 0.75;
-      transition: opacity 1s ease;
+    /* ==========================================================================
+       SECTION 1: THE BIRTHDAY & LOVE LETTER
+       ========================================================================== */
+    .letter-section {
+      margin-bottom: 80px;
+      position: relative;
     }
 
-    @media (max-width: 900px) {
-      .collage-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .letter-paper-card {
+      position: relative;
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 117, 143, 0.45);
+      border-radius: 36px;
+      padding: 58px 44px;
+      box-shadow: var(--shadow-float);
+      color: var(--text-dark);
+      text-align: left;
+    }
+
+    @media (max-width: 640px) {
+      .letter-paper-card {
+        padding: 42px 24px;
+        border-radius: 26px;
       }
     }
 
-    @media (max-width: 600px) {
-      .collage-grid {
-        grid-template-columns: repeat(2, 1fr);
+    /* Red wax seal ribbon */
+    .letter-seal-ribbon {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 62px;
+      height: 62px;
+      background: linear-gradient(135deg, #e02438 0%, #8f0e1d 100%);
+      border: 3px solid #ffccd5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 28px;
+      box-shadow: 0 8px 24px rgba(179, 18, 36, 0.45);
+    }
+
+    .letter-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blush);
+      color: var(--primary-red);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      margin-bottom: 18px;
+    }
+
+    .letter-main-title {
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--primary-red);
+      line-height: 1.2;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    @media (max-width: 640px) {
+      .letter-main-title {
+        font-size: 32px;
       }
     }
 
-    .collage-item {
+    .letter-subtitle-cute {
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+      color: var(--crimson);
+      margin-bottom: 24px;
+    }
+
+    .letter-divider-hearts {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--rose-pink);
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+
+    .letter-divider-hearts::before,
+    .letter-divider-hearts::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(to right, transparent, rgba(224, 36, 56, 0.4), transparent);
+    }
+
+    .letter-salutation-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-style: italic;
+      color: var(--primary-red);
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .letter-content-text {
+      font-size: 17.5px;
+      line-height: 1.9;
+      color: #3f2a31;
+    }
+
+    .letter-content-text p {
+      margin-bottom: 22px;
+    }
+
+    .letter-content-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .letter-signoff {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px dashed rgba(224, 36, 56, 0.25);
+    }
+
+    .signoff-note {
+      font-family: 'Caveat', cursive;
+      font-size: 32px;
+      color: var(--primary-red);
+      font-weight: 700;
+    }
+
+    .scroll-down-invitation {
+      margin-top: 40px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(255, 229, 236, 0.7), rgba(255, 240, 243, 0.9));
+      border: 1.5px dashed var(--rose-pink);
+      border-radius: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .scroll-down-invitation:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(224, 36, 56, 0.15);
+      background: #fff;
+    }
+
+    .scroll-invitation-title {
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+      color: var(--primary-red);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .scroll-invitation-sub {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .bouncing-arrow {
+      animation: bounceDown 1.8s infinite;
+      font-size: 20px;
+      display: inline-block;
+      color: var(--primary-red);
+    }
+
+    @keyframes bounceDown {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(8px); }
+      60% { transform: translateY(4px); }
+    }
+
+    /* ==========================================================================
+       SECTION 2: THE 52-PHOTO VERY LONG SCROLL
+       One photo at a time, surrounded by cute love, red hearts, and sweet words!
+       ========================================================================== */
+    .timeline-container {
+      display: flex;
+      flex-direction: column;
+      gap: 90px;
+      position: relative;
+    }
+
+    /* Memory Card (One photo at a time) */
+    .memory-card-wrapper {
       position: relative;
       width: 100%;
-      height: 100%;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #36282f;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      max-width: 680px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+      transition: opacity 0.75s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    .collage-item img {
+    .memory-card-wrapper.in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Polaroid & Cozy Frame Style */
+    .memory-frame {
+      position: relative;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 24px 24px 34px 24px;
+      box-shadow: 0 20px 60px rgba(179, 18, 36, 0.16);
+      border: 2px solid rgba(255, 117, 143, 0.35);
+      transition: var(--transition-smooth);
+    }
+
+    .memory-frame:hover {
+      box-shadow: 0 26px 70px rgba(179, 18, 36, 0.25);
+      transform: translateY(-4px);
+    }
+
+    /* Washi Tape Effect at top of polaroid */
+    .washi-tape {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 130px;
+      height: 30px;
+      background: rgba(255, 182, 193, 0.75);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      border-left: 2px dashed rgba(255, 255, 255, 0.8);
+      border-right: 2px dashed rgba(255, 255, 255, 0.8);
+      border-radius: 3px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      color: #900c3f;
+      font-weight: 700;
+      transform: translateX(-50%) rotate(-1.5deg);
+    }
+
+    .memory-photo-container {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff5f7;
+      margin-bottom: 20px;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.06);
+    }
+
+    @media (max-width: 640px) {
+      .memory-photo-container {
+        height: 360px;
+      }
+    }
+
+    .memory-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -434,1006 +782,915 @@
       transition: transform 0.6s ease;
     }
 
-    /* Soft dark & frosted-glass overlay across the collage */
-    .collage-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 2;
-      background: radial-gradient(circle at 50% 45%, rgba(31, 26, 29, 0.75) 0%, rgba(18, 13, 16, 0.9) 100%);
-      backdrop-filter: blur(7px);
-      -webkit-backdrop-filter: blur(7px);
-      pointer-events: none;
+    .memory-frame:hover .memory-img {
+      transform: scale(1.03);
     }
 
-    /* Foreground Centered Romantic Card */
-    .letter-stage-content {
-      position: relative;
-      z-index: 10;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 80px 20px 100px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .letter-card {
-      position: relative;
-      width: 100%;
-      background: var(--cream-card);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border: 1.5px solid rgba(255, 255, 255, 0.85);
-      border-radius: 28px;
-      padding: 60px 48px;
-      box-shadow: var(--shadow-elevated), 0 0 80px rgba(183, 110, 121, 0.12);
-      color: var(--charcoal);
-      transition: transform 0.4s ease;
-    }
-
-    @media (max-width: 640px) {
-      .letter-stage-content {
-        padding: 60px 16px 80px 16px;
-      }
-      .letter-card {
-        padding: 42px 24px;
-        border-radius: 22px;
-      }
-    }
-
-    /* Decorative Wax Seal / Emblem at top of card */
-    .wax-seal {
+    /* Cute love stickers floating around the photo */
+    .sticker-badge {
       position: absolute;
-      top: -28px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(135deg, #b76e79 0%, #7d323e 100%);
-      border: 2px solid #dfb15b;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 20px rgba(125, 50, 62, 0.35);
-      color: #fff;
-    }
-
-    .wax-seal svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-
-    .romantic-date-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--rose-light);
-      color: var(--rose-deep);
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      padding: 6px 16px;
-      border-radius: 9999px;
-      margin-bottom: 20px;
-    }
-
-    .letter-headline {
-      font-size: 42px;
-      line-height: 1.2;
+      z-index: 6;
+      background: #ffffff;
+      border: 1.5px solid var(--rose-pink);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
       font-weight: 700;
-      color: var(--charcoal);
-      margin-bottom: 24px;
-      letter-spacing: -0.5px;
-    }
-
-    @media (max-width: 640px) {
-      .letter-headline {
-        font-size: 32px;
-      }
-    }
-
-    .letter-divider {
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(to right, var(--rose-primary), var(--gold-accent));
-      border-radius: 2px;
-      margin-bottom: 32px;
-    }
-
-    .letter-body {
-      font-size: 17px;
-      line-height: 1.85;
-      color: var(--charcoal-soft);
-      font-weight: 400;
-      margin-bottom: 40px;
-    }
-
-    .letter-body p {
-      margin-bottom: 20px;
-    }
-
-    .letter-body p:last-child {
-      margin-bottom: 0;
-    }
-
-    .letter-salutation {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-style: italic;
-      color: var(--rose-primary);
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .letter-signature-block {
-      margin-top: 36px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(183, 110, 121, 0.2);
-    }
-
-    .letter-signature {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      font-style: italic;
-      color: var(--rose-dark);
-    }
-
-    /* Eye-catching Finale Unlock Button */
-    .finale-cta-wrapper {
-      margin-top: 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .unlock-finale-btn {
-      position: relative;
+      color: var(--primary-red);
+      box-shadow: 0 8px 20px rgba(224, 36, 56, 0.2);
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 18px 36px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: #fff;
-      background: var(--rose-gold-gradient);
-      border: none;
-      border-radius: 9999px;
-      cursor: pointer;
-      box-shadow: 0 12px 32px rgba(183, 110, 121, 0.45);
-      transition: var(--transition-smooth);
-      overflow: hidden;
+      gap: 6px;
+      pointer-events: none;
+      animation: gentleWiggle 3.5s ease-in-out infinite alternate;
     }
 
-    .unlock-finale-btn::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-      animation: buttonShimmer 3.5s infinite;
+    @keyframes gentleWiggle {
+      0% { transform: translateY(0) rotate(-4deg); }
+      100% { transform: translateY(-5px) rotate(4deg); }
     }
 
-    @keyframes buttonShimmer {
-      0% { left: -100%; }
-      35%, 100% { left: 100%; }
+    .sticker-top-left {
+      top: 14px;
+      left: 14px;
     }
 
-    .unlock-finale-btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 16px 40px rgba(183, 110, 121, 0.6);
-      filter: brightness(1.05);
+    .sticker-bottom-right {
+      bottom: 14px;
+      right: 14px;
     }
 
-    .unlock-finale-btn:active {
-      transform: translateY(-1px);
-    }
-
-    .cta-subtext {
-      font-size: 13.5px;
-      color: var(--charcoal-muted);
+    /* Memory Card Bottom Content (Big Love Affirmations!) */
+    .memory-meta {
       display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .memory-number-pill {
+      display: inline-flex;
       align-items: center;
       gap: 6px;
+      align-self: flex-start;
+      background: var(--blush);
+      color: var(--deep-red);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 14px;
+      border-radius: 9999px;
     }
 
-    /* ==========================================================================
-       MODALS: SHARED STYLES (STAGE 3 QUIZ & STAGE 4 VIDEO)
-       ========================================================================== */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
+    /* Prominent User-requested Affirmations */
+    .memory-affirmation-big {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-red);
+      line-height: 1.35;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(18, 12, 15, 0.82);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
+      gap: 8px;
     }
 
-    .modal-overlay.active {
-      opacity: 1;
-      visibility: visible;
+    .memory-handwritten-note {
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      color: var(--crimson);
+      line-height: 1.3;
     }
 
-    .modal-container {
-      position: relative;
-      width: 100%;
-      background: var(--cream);
-      border: 1.5px solid rgba(255, 255, 255, 0.9);
-      border-radius: 24px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-      transform: scale(0.94) translateY(10px);
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      overflow: hidden;
-    }
-
-    .modal-overlay.active .modal-container {
-      transform: scale(1) translateY(0);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 38px;
-      height: 38px;
-      background: rgba(183, 110, 121, 0.12);
-      border: none;
-      border-radius: 50%;
+    /* Memory interactive heart love-it button */
+    .memory-interactive-row {
+      margin-top: 14px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: var(--charcoal);
+      justify-content: space-between;
+      border-top: 1px dashed rgba(224, 36, 56, 0.2);
+      padding-top: 14px;
+    }
+
+    .like-memory-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1.5px solid var(--rose-pink);
+      padding: 8px 18px;
+      border-radius: 999px;
+      color: var(--primary-red);
+      font-family: 'Poppins', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
       cursor: pointer;
       transition: var(--transition-smooth);
-      z-index: 5;
     }
 
-    .modal-close-btn:hover {
-      background: var(--rose-primary);
+    .like-memory-btn:hover {
+      background: var(--blush);
+      border-color: var(--primary-red);
+      transform: scale(1.05);
+    }
+
+    .like-memory-btn.liked {
+      background: var(--primary-red);
       color: #fff;
-      transform: rotate(90deg);
+      border-color: var(--primary-red);
+    }
+
+    .memory-cute-sparkles {
+      font-size: 20px;
+      user-select: none;
     }
 
     /* ==========================================================================
-       STAGE 3: THE QUIZ MODAL
+       SECTION 3: GRAND FINALE CARD (AT END OF 52 PHOTOS)
        ========================================================================== */
-    .quiz-container {
-      max-width: 540px;
-      padding: 40px 32px;
-    }
-
-    @media (max-width: 480px) {
-      .quiz-container {
-        padding: 32px 20px;
-      }
-    }
-
-    .quiz-header {
-      margin-bottom: 24px;
+    .finale-card-section {
+      margin-top: 100px;
       text-align: center;
     }
 
-    .quiz-step-badge {
+    .finale-card {
+      position: relative;
+      background: linear-gradient(135deg, #ffffff 0%, #fff0f3 100%);
+      border: 2.5px solid var(--primary-red);
+      border-radius: 36px;
+      padding: 60px 36px;
+      box-shadow: 0 30px 80px rgba(224, 36, 56, 0.3);
+    }
+
+    .finale-heart-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
       display: inline-block;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--rose-primary);
-      background: var(--rose-light);
-      padding: 4px 14px;
-      border-radius: 9999px;
+      animation: heartbeatGlow 1.8s infinite;
+    }
+
+    .finale-title {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--primary-red);
       margin-bottom: 12px;
     }
 
-    .quiz-progress-track {
-      width: 100%;
-      height: 6px;
-      background: #f0e6e9;
-      border-radius: 999px;
-      overflow: hidden;
-      margin-bottom: 20px;
+    .finale-text {
+      font-size: 18px;
+      color: var(--text-dark);
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+      line-height: 1.8;
     }
 
-    .quiz-progress-bar {
-      height: 100%;
-      width: 33.3%;
-      background: var(--rose-gold-gradient);
-      border-radius: 999px;
-      transition: width 0.4s ease;
+    .finale-text strong {
+      color: var(--deep-red);
     }
 
-    .quiz-question-title {
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.35;
-      margin-bottom: 8px;
-    }
-
-    .quiz-options-list {
+    .finale-btn-group {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .quiz-option-btn {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 18px;
-      background: #fff;
-      border: 1.5px solid rgba(183, 110, 121, 0.25);
-      border-radius: 14px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--charcoal);
-      cursor: pointer;
-      text-align: left;
-      transition: var(--transition-smooth);
-    }
-
-    .quiz-option-btn:hover {
-      border-color: var(--rose-primary);
-      background: var(--rose-blush);
-      transform: translateX(4px);
-    }
-
-    .option-letter {
-      width: 30px;
-      height: 30px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      background: var(--rose-light);
-      color: var(--rose-deep);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 13px;
-      transition: var(--transition-smooth);
-    }
-
-    .quiz-option-btn:hover .option-letter {
-      background: var(--rose-primary);
-      color: #fff;
-    }
-
-    .quiz-option-btn.correct-choice {
-      background: #e8f5e9;
-      border-color: #4caf50;
-      color: #2e7d32;
-    }
-    .quiz-option-btn.correct-choice .option-letter {
-      background: #4caf50;
-      color: #fff;
-    }
-
-    .quiz-option-btn.wrong-choice {
-      background: #ffebee;
-      border-color: #ef5350;
-      color: #c62828;
-      animation: shake 0.45s ease;
-    }
-    .quiz-option-btn.wrong-choice .option-letter {
-      background: #ef5350;
-      color: #fff;
-    }
-
-    .quiz-feedback-box {
-      min-height: 24px;
-      font-size: 14px;
-      font-weight: 500;
-      text-align: center;
-      color: var(--rose-primary);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .quiz-feedback-box.show {
-      opacity: 1;
-    }
-
-    /* ==========================================================================
-       STAGE 4: THE FINALE (SURPRISE VIDEO MODAL)
-       ========================================================================== */
-    .video-container {
-      max-width: 800px;
-      padding: 36px;
-    }
-
-    @media (max-width: 640px) {
-      .video-container {
-        padding: 24px 16px;
-      }
-    }
-
-    .video-header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .video-badge {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #fff;
-      background: linear-gradient(135deg, #dfb15b, #b76e79);
-      padding: 5px 16px;
-      border-radius: 9999px;
-      margin-bottom: 10px;
-      box-shadow: 0 4px 12px rgba(223, 177, 91, 0.35);
-    }
-
-    .video-title {
-      font-size: 30px;
-      font-weight: 700;
-      color: var(--charcoal);
-      margin-bottom: 6px;
-    }
-
-    .video-subtitle {
-      font-size: 14.5px;
-      color: var(--charcoal-muted);
-    }
-
-    .video-frame-wrapper {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
-      border-radius: 16px;
-      overflow: hidden;
-      background: #000;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
-      margin-bottom: 24px;
-    }
-
-    .video-frame-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .video-footer {
-      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 16px;
     }
 
-    .secondary-btn {
-      padding: 12px 24px;
+    .celebrate-again-btn {
+      padding: 16px 36px;
+      background: linear-gradient(135deg, #ff4d6d 0%, #e02438 100%);
+      color: #fff;
       font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--charcoal-soft);
-      background: #f0e6e9;
+      font-size: 17px;
+      font-weight: 600;
       border: none;
-      border-radius: 10px;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(224, 36, 56, 0.4);
+      transition: var(--transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .celebrate-again-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 14px 36px rgba(224, 36, 56, 0.55);
+    }
+
+    .back-to-top-btn {
+      padding: 16px 30px;
+      background: #ffffff;
+      color: var(--primary-red);
+      border: 2px solid var(--primary-red);
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 9999px;
       cursor: pointer;
       transition: var(--transition-smooth);
     }
 
-    .secondary-btn:hover {
-      background: #e5d6da;
-      color: var(--charcoal);
+    .back-to-top-btn:hover {
+      background: var(--blush);
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Ambient Particles (Hearts) -->
-  <div class="hearts-container" id="heartsContainer"></div>
+  <!-- Top Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
 
-  <!-- Background Audio Element -->
-  <audio id="bgMusic" loop preload="auto"></audio>
+  <!-- Red Hearts Everywhere Background -->
+  <div class="hearts-background-layer">
+    <div class="hearts-pattern"></div>
+  </div>
 
-  <!-- Top-Right Floating Music Toggle Bar -->
-  <div class="audio-control-bar" id="audioToggleBtn" title="Toggle background music">
-    <div class="audio-bars">
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
+  <!-- Rising Floating Red Hearts Container -->
+  <div class="floating-hearts-container" id="floatingHeartsContainer"></div>
+
+  <!-- Top-Right Floating Music Bar (YouTube Songs: 1 & 2) -->
+  <aside class="music-bar-widget" id="musicWidget" title="Click to toggle YouTube background music">
+    <div class="music-waves">
+      <div class="music-wave"></div>
+      <div class="music-wave"></div>
+      <div class="music-wave"></div>
+      <div class="music-wave"></div>
     </div>
-    <span class="audio-label" id="audioStatusText">Music: Off</span>
+    <div class="song-details">
+      <span class="song-badge" id="musicBadge">Our Song #1</span>
+      <span class="song-title-text" id="musicTitle">Loading track...</span>
+    </div>
+    <div class="music-actions">
+      <button class="music-btn" id="musicToggleBtn" title="Play/Pause">⏸️</button>
+      <button class="music-btn" id="musicNextBtn" title="Next Song">⏭️</button>
+    </div>
+  </aside>
+
+  <!-- YouTube IFrame API Target Container (Hidden audio player) -->
+  <div id="ytPlayerContainer">
+    <div id="ytPlayer"></div>
   </div>
 
   <!-- ========================================================================
-       STAGE 1: THE LOCKSCREEN
+       STAGE 1: LOCKSCREEN (COZY RED HEARTS & PIN 1405)
        ======================================================================== -->
   <section id="lockscreen">
     <div class="lock-card">
-      <div class="lock-emblem">
-        <svg viewBox="0 0 24 24">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-        </svg>
-      </div>
-      <h1 class="lock-title">For Someone Special ✨</h1>
-      <p class="lock-subtitle">Enter the 4-digit code to reveal your birthday surprise</p>
+      <!-- Heart Emblem -->
+      <div class="lock-heart-badge">❤️</div>
+      <h1 class="lock-heading">Happy Birthday!</h1>
+      <div class="lock-for-tisha">Special Surprise for Tisha 🌹</div>
+      <p class="lock-prompt">Bolo to babuu pasword ki hote paree</p>
 
       <!-- 4-Digit Input Fields -->
-      <div class="pin-input-group" id="pinGroup">
-        <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="pin-digit" data-index="0" autofocus />
-        <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="pin-digit" data-index="1" />
-        <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="pin-digit" data-index="2" />
-        <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="pin-digit" data-index="3" />
+      <div class="pin-boxes-row" id="pinBoxGroup">
+        <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="pin-digit-box" data-index="0" autofocus />
+        <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="pin-digit-box" data-index="1" />
+        <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="pin-digit-box" data-index="2" />
+        <input type="password" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="pin-digit-box" data-index="3" />
       </div>
 
-      <!-- Playful Error Toast -->
-      <div class="pin-error-toast" id="pinError">Oops, try again! 💕</div>
+      <!-- Playful Error Message -->
+      <div class="lock-error-msg" id="lockErrorMsg">Oops, try again! 💕</div>
 
-      <!-- Clue Box -->
-      <div class="pin-hint-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="16" x2="12" y2="12"></line>
-          <line x1="12" y1="8" x2="12.01" y2="8"></line>
-        </svg>
-        <span id="pinHintText">Hint: The day I asked you to be mine (MMDD)</span>
+      <!-- Hint Pill -->
+      <div class="lock-hint-pill" id="lockHintPill">
+        <span>🗝️</span>
+        <span id="lockHintText">Hint: The day it all started</span>
       </div>
 
-      <!-- Explicit Action Button -->
-      <button class="unlock-btn" id="unlockButton">
-        <span>Unlock Birthday Surprise</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14"></path>
-          <path d="M12 5l7 7-7 7"></path>
-        </svg>
+      <!-- Unlock Action Button -->
+      <button class="lock-submit-btn" id="lockSubmitBtn">
+        <span>Unlock My Surprise ❤️</span>
+        <span>→</span>
       </button>
     </div>
   </section>
 
   <!-- ========================================================================
-       STAGE 2: THE MAIN PAGE (AESTHETIC PHOTO COLLAGE & LOVE LETTER CARD)
+       STAGE 2 & 3: MAIN APP (LOVE LETTER & 52-PHOTO LOVE SCROLL)
        ======================================================================== -->
-  <main id="mainStage">
-    <!-- Fixed Background Photo Collage -->
-    <div class="collage-wrapper">
-      <div class="collage-grid" id="collageGrid">
-        <!-- Dynamically generated from images/photo1.jpg to photoN.jpg -->
-      </div>
-    </div>
-    <!-- Soft Frosted Overlay -->
-    <div class="collage-overlay"></div>
+  <main id="mainApp">
+    <div class="page-wrapper">
 
-    <!-- Centered Love Letter Card -->
-    <div class="letter-stage-content">
-      <article class="letter-card">
-        <!-- Decorative Wax Seal / Ribbon Heart -->
-        <div class="wax-seal">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-          </svg>
-        </div>
+      <!-- ====================================================================
+           THE BIRTHDAY & LOVE LETTER FOR TISHA
+           ==================================================================== -->
+      <section class="letter-section">
+        <article class="letter-paper-card">
+          <!-- Wax Seal -->
+          <div class="letter-seal-ribbon">❤️</div>
 
-        <div class="romantic-date-pill" id="letterBadge">Celebrating You Today ✨</div>
-        <h1 class="letter-headline" id="letterHeadline">Happy Birthday, My Love ✨</h1>
-        <div class="letter-divider"></div>
+          <div class="letter-tagline">To The Love Of My Life ✨</div>
+          <h1 class="letter-main-title" id="letterTitle">Happy Birthday, Tisha! ❤️</h1>
+          <p class="letter-subtitle-cute" id="letterSub">You are the most precious gift the universe ever gave me</p>
 
-        <div class="letter-body">
-          <span class="letter-salutation" id="letterSalutation">My Dearest,</span>
-          <div id="letterParagraphs">
-            <!-- Populated via CONFIG.LETTER_CONTENT -->
+          <div class="letter-divider-hearts">
+            <span>❤️</span>
+            <span>💖</span>
+            <span>❤️</span>
           </div>
-          <div class="letter-signature-block">
-            <div class="letter-signature" id="letterSignature">Forever & Always Yours, ❤️</div>
+
+          <div class="letter-salutation-text" id="letterSalutation">My Dearest Tisha,</div>
+
+          <div class="letter-content-text" id="letterContent">
+            <!-- Rendered from CONFIG.LETTER_PARAGRAPHS -->
+          </div>
+
+          <div class="letter-signoff">
+            <div class="signoff-note" id="letterSignoff">Forever & Always Yours, with all my heart ❤️</div>
+          </div>
+
+          <!-- Invitation to the 52 Photos Scroll -->
+          <div class="scroll-down-invitation" id="scrollDownBtn">
+            <div class="scroll-invitation-title">Ready for your 52 memories? 👇</div>
+            <div class="scroll-invitation-sub">
+              <span>Scroll down to walk through all 52 photos filled with love</span>
+              <span class="bouncing-arrow">↓</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ====================================================================
+           VERY LONG SCROLL: 52 PHOTOS (ONE PHOTO AT A TIME)
+           Filled with cute love, red hearts, and sweet affirmations!
+           ==================================================================== -->
+      <section class="timeline-container" id="photosTimeline">
+        <!-- Dynamically populated from photo 1 to photo 52 -->
+      </section>
+
+      <!-- ====================================================================
+           GRAND FINALE CARD (AT END OF 52 PHOTOS)
+           ==================================================================== -->
+      <section class="finale-card-section">
+        <div class="finale-card">
+          <div class="finale-heart-icon">💖</div>
+          <h2 class="finale-title">I Love You So Much, Tisha!</h2>
+          <p class="finale-text">
+            Out of everyone in this whole world, <strong>you are the best person I have ever met</strong>.<br />
+            Thank you for being my happiness, my safe space, and my favorite reason to smile every single day.
+          </p>
+          <div class="finale-btn-group">
+            <button class="celebrate-again-btn" id="blastConfettiBtn">
+              <span>Blast Confetti For Tisha! 🎉</span>
+            </button>
+            <button class="back-to-top-btn" id="backToTopBtn">
+              <span>Back to Top 💌</span>
+            </button>
           </div>
         </div>
+      </section>
 
-        <!-- Eye-catching Unlock Birthday Video Button -->
-        <div class="finale-cta-wrapper">
-          <button class="unlock-finale-btn" id="openQuizBtn">
-            <span>Unlock Your Birthday Video 🎁</span>
-          </button>
-          <span class="cta-subtext">A tiny memory challenge awaits to claim your grand finale!</span>
-        </div>
-      </article>
     </div>
   </main>
-
-  <!-- ========================================================================
-       STAGE 3: THE QUIZ MODAL
-       ======================================================================== -->
-  <div class="modal-overlay" id="quizModal">
-    <div class="modal-container quiz-container">
-      <button class="modal-close-btn" id="closeQuizBtn" title="Close quiz">✕</button>
-
-      <div class="quiz-header">
-        <span class="quiz-step-badge" id="quizStepText">Question 1 of 3</span>
-        <div class="quiz-progress-track">
-          <div class="quiz-progress-bar" id="quizProgressBar"></div>
-        </div>
-        <h3 class="quiz-question-title" id="quizQuestionText">Where did we have our very first official date?</h3>
-      </div>
-
-      <!-- Multiple Choice Options -->
-      <div class="quiz-options-list" id="quizOptionsContainer">
-        <!-- Rendered dynamically -->
-      </div>
-
-      <!-- Feedback Box -->
-      <div class="quiz-feedback-box" id="quizFeedback">Oops, try again! 💕</div>
-    </div>
-  </div>
-
-  <!-- ========================================================================
-       STAGE 4: THE FINALE (SURPRISE VIDEO MODAL)
-       ======================================================================== -->
-  <div class="modal-overlay" id="videoModal">
-    <div class="modal-container video-container">
-      <button class="modal-close-btn" id="closeVideoBtn" title="Close video">✕</button>
-
-      <div class="video-header">
-        <span class="video-badge">The Grand Finale 🎬</span>
-        <h2 class="video-title">Happy Birthday, My Entire World!</h2>
-        <p class="video-subtitle">Here is a special keepsake crafted just for you...</p>
-      </div>
-
-      <!-- 16:9 YouTube Video Frame -->
-      <div class="video-frame-wrapper">
-        <iframe id="youtubeIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-footer">
-        <button class="secondary-btn" id="returnToLetterBtn">Back to Love Letter 💌</button>
-      </div>
-    </div>
-  </div>
 
   <!-- ========================================================================
        JAVASCRIPT LOGIC & CONFIGURATION
        ======================================================================== -->
   <script>
     /* ==========================================================================
-       ⚙️ CONFIGURABLE SETTINGS (TOP OF SCRIPT)
-       Easily customize these values for your special person!
+       ⚙️ EASY-TO-EDIT CONFIGURATION OBJECT
+       Update these settings easily without touching any other code!
        ========================================================================== */
     const CONFIG = {
-      // 4-digit unlock PIN (e.g., anniversary date, first meeting date)
-      PIN: "0418",
+      // 4-digit unlock password
+      PIN: "1405",
 
-      // Text hint displayed on the lockscreen
-      PIN_HINT: "Hint: The day I asked you to be mine (MMDD)",
+      // Password hint displayed on lockscreen
+      PIN_HINT: "Hint: The day it all started",
 
-      // Number of background photos in images/ folder (photo1.jpg ... photoN.jpg)
-      TOTAL_PHOTOS: 12,
+      // Total number of photos in images/ folder (images/photo1.jpg ... photo52.jpg)
+      TOTAL_PHOTOS: 52,
 
-      // Link or local path to your background audio file
-      // Tip: You can point to a local audio file like "music.mp3" or any direct MP3 URL
-      MUSIC_URL: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3",
+      // Two YouTube songs requested by the user:
+      // Song 1: https://www.youtube.com/watch?v=e1mOmdykmwI
+      // Song 2: https://www.youtube.com/watch?v=o7A5BhnZ6H4
+      PLAYLIST: [
+        {
+          id: "e1mOmdykmwI",
+          title: "Our Romantic Melody #1"
+        },
+        {
+          id: "o7A5BhnZ6H4",
+          title: "Our Special Song #2"
+        }
+      ],
 
-      // YouTube video ID for the Stage 4 finale video
-      // (e.g. for https://www.youtube.com/watch?v=dQw4w9WgXcQ, the ID is "dQw4w9WgXcQ")
-      YOUTUBE_VIDEO_ID: "dQw4w9WgXcQ",
-
-      // Romantic love letter content
-      LETTER_CONTENT: {
-        badge: "Celebrating You Today ✨",
-        headline: "Happy Birthday, My Love ✨",
-        salutation: "My Sweetest Darling,",
+      // Birthday & Love letter content for Tisha
+      LETTER: {
+        headline: "Happy Birthday, Tisha! ❤️",
+        subtitle: "You are the most precious gift the universe ever gave me",
+        salutation: "My Dearest Tisha,",
         paragraphs: [
-          "Today is dedicated entirely to celebrating the most beautiful soul I have ever known. From the very moment you entered my world, everything became brighter, warmer, and filled with quiet wonder.",
-          "Looking through our memories together, I am reminded of how deeply grateful I am for your laughter, your gentle kindness, and the way your hand fits perfectly in mine. With you, even ordinary days feel like poetry.",
-          "May this new year of your life bring you all the magic, joy, and peace you so effortlessly bring to everyone around you. I love you more than words can ever truly hold—today, tomorrow, and through every lifetime."
+          "Today is all about celebrating you—the most gorgeous, sweet, and wonderfully kind person I have ever had the privilege to love. Every single second spent with you feels like a blessing.",
+          "I wanted to build you this little world, filled with red hearts and all 52 of our special moments, just to remind you how deeply and endlessly you are cherished.",
+          "You are the best person I have met. You make my worst days peaceful and my best days unforgettable. Happy Birthday, my love! Here's to you, to us, and to a lifetime of love."
         ],
-        signature: "Forever & Always Yours, ❤️"
+        signoff: "Forever & Always Yours, with all my love ❤️"
       },
 
-      // Quiz questions before unlocking the finale video
-      QUIZ_DATA: [
-        {
-          question: "Where did we have our very first official date?",
-          choices: [
-            "A cozy candlelit coffee walk",
-            "The little corner Italian restaurant",
-            "Late night stargazing by the coast",
-            "A spontaneous picnic in the rain"
-          ],
-          correctIndex: 1
-        },
-        {
-          question: "What is my absolute favorite thing about you?",
-          choices: [
-            "Your contagious, heart-melting laugh",
-            "The warmth and kindness in your eyes",
-            "How safe and loved I feel next to you",
-            "All of the above, endlessly 💕"
-          ],
-          correctIndex: 3
-        },
-        {
-          question: "What is my biggest birthday wish for you today?",
-          choices: [
-            "A year full of endless smiles and dreams coming true",
-            "Unlimited warm hugs and forehead kisses",
-            "To hold your hand through every tomorrow",
-            "Every single happiness the universe can give you ✨"
-          ],
-          correctIndex: 3
-        }
+      // Heartfelt rotating captions & affirmations around the 52 photos
+      AFFIRMATIONS: [
+        "I love you Tisha ❤️",
+        "I love you soooo much! 💕",
+        "You are the best person I have met 💖",
+        "My favorite smile in the whole universe ✨",
+        "Loving you is my favorite thing to do 🌹",
+        "You make every single day brighter ☀️",
+        "Forever grateful for you, Tisha 🌸",
+        "The sweetest soul I know 💌",
+        "My heart belongs to you, always 💫",
+        "You are pure magic, Tisha 💖",
+        "Every moment with you is a treasure 🧸",
+        "I will choose you in every lifetime ❤️"
+      ],
+
+      // Cute sticker captions floating around the photos
+      STICKERS: [
+        "❤️ Forever", "✨ Sweet Tisha", "🧸 My Favorite", "🌸 Beautiful",
+        "💌 Cutest smile", "💖 So loved", "🎀 Best memory", "🌹 My whole heart",
+        "🥰 Hugs & Kisses", "💫 Dream come true"
       ]
     };
 
     /* ==========================================================================
-       FALLBACK MEMORY GENERATOR FOR PREVIEWS
-       In case local images are not yet added to images/, this provides an
-       aesthetic romantic memory card so the live preview is immediately lovely!
+       FALLBACK PRETTY MEMORY CARDS
+       In case local images/photoX.jpg files are still being copied by the user,
+       these provide a gorgeous romantic placeholder so the page never looks broken!
        ========================================================================== */
-    const FALLBACK_MEMORIES = [
-      { title: "First Coffee Date", color: "#fce4ec", text: "☕ Morning magic with you" },
-      { title: "Stargazing Night", color: "#f3e5f5", text: "🌙 Counting stars together" },
-      { title: "Our Favorite Song", color: "#ffebee", text: "🎶 Dancing in the living room" },
-      { title: "Sunset Walk", color: "#fff3e0", text: "🌅 Golden hour memories" },
-      { title: "Weekend Roadtrip", color: "#e8f5e9", text: "🚗 Singing on open roads" },
-      { title: "Seaside Breeze", color: "#e0f7fa", text: "🌊 Ocean waves and warm hands" },
-      { title: "Sweetest Laughs", color: "#fce4ec", text: "😊 My favorite sound in the world" },
-      { title: "Candlelit Dinner", color: "#fff8e1", text: "🕯️ Whispering across the table" },
-      { title: "Movie Marathon", color: "#ede7f6", text: "🍿 Wrapped in cozy blankets" },
-      { title: "Holding Hands", color: "#fbe9e7", text: "💫 Always by your side" },
-      { title: "Picnic in the Park", color: "#f9fbe7", text: "🌸 Cherry blossoms in spring" },
-      { title: "Forever with You", color: "#fce4ec", text: "💖 Every second is a gift" }
-    ];
-
-    function handleImageError(imgEl, index) {
-      // Graceful fallback to aesthetic memory card SVG
-      const mem = FALLBACK_MEMORIES[(index - 1) % FALLBACK_MEMORIES.length];
-      const svgPlaceholder = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800"><rect width="600" height="800" fill="${encodeURIComponent(mem.color)}"/><circle cx="300" cy="340" r="140" fill="rgba(255,255,255,0.4)"/><text x="300" y="360" font-size="80" text-anchor="middle">❤️</text><text x="300" y="530" font-family="Georgia,serif" font-size="34" font-weight="bold" fill="%232d2429" text-anchor="middle">${encodeURIComponent(mem.title)}</text><text x="300" y="580" font-family="sans-serif" font-size="20" fill="%2366505b" text-anchor="middle">${encodeURIComponent(mem.text)}</text><text x="300" y="620" font-family="sans-serif" font-size="14" fill="%239e7b89" text-anchor="middle">Photo %23${index}</text></svg>`;
-      imgEl.src = svgPlaceholder;
+    function getFallbackSvg(index) {
+      const affirmation = CONFIG.AFFIRMATIONS[(index - 1) % CONFIG.AFFIRMATIONS.length];
+      return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%25" stop-color="%23fff0f3"/><stop offset="100%25" stop-color="%23ffd6df"/></linearGradient></defs><rect width="600" height="750" fill="url(%23bg)" rx="24"/><rect x="30" y="30" width="540" height="690" fill="none" stroke="%23ff758f" stroke-width="2" stroke-dasharray="8 6" rx="20"/><text x="300" y="240" font-size="84" text-anchor="middle">❤️</text><text x="300" y="340" font-family="Georgia,serif" font-size="36" font-weight="bold" fill="%23b31224" text-anchor="middle">Photo %23${index}</text><text x="300" y="400" font-family="sans-serif" font-size="22" font-weight="bold" fill="%23e02438" text-anchor="middle">${encodeURIComponent(affirmation)}</text><text x="300" y="460" font-family="sans-serif" font-size="16" fill="%2373535d" text-anchor="middle">Place your photo in images/photo${index}.jpg</text><text x="300" y="550" font-size="36" text-anchor="middle">🧸 💖 🌸 ✨ 💌</text></svg>`;
     }
 
     /* ==========================================================================
-       APPLICATION STATE & DOM REFERENCES
+       APP STATE
        ========================================================================== */
-    const state = {
+    const appState = {
       isUnlocked: false,
+      currentSongIndex: 0,
       isPlayingMusic: false,
-      audioMutedByUser: false,
-      currentQuizStep: 0,
-      synthAudioCtx: null,
-      synthInterval: null
+      ytPlayer: null,
+      ytReady: false
     };
-
-    // DOM Elements
-    const lockscreenEl = document.getElementById("lockscreen");
-    const pinGroupEl = document.getElementById("pinGroup");
-    const pinDigits = document.querySelectorAll(".pin-digit");
-    const pinErrorEl = document.getElementById("pinError");
-    const pinHintTextEl = document.getElementById("pinHintText");
-    const unlockBtn = document.getElementById("unlockButton");
-
-    const mainStageEl = document.getElementById("mainStage");
-    const collageGridEl = document.getElementById("collageGrid");
-    const letterBadgeEl = document.getElementById("letterBadge");
-    const letterHeadlineEl = document.getElementById("letterHeadline");
-    const letterSalutationEl = document.getElementById("letterSalutation");
-    const letterParagraphsEl = document.getElementById("letterParagraphs");
-    const letterSignatureEl = document.getElementById("letterSignature");
-    const openQuizBtn = document.getElementById("openQuizBtn");
-
-    const quizModalEl = document.getElementById("quizModal");
-    const closeQuizBtn = document.getElementById("closeQuizBtn");
-    const quizStepTextEl = document.getElementById("quizStepText");
-    const quizProgressBarEl = document.getElementById("quizProgressBar");
-    const quizQuestionTextEl = document.getElementById("quizQuestionText");
-    const quizOptionsContainerEl = document.getElementById("quizOptionsContainer");
-    const quizFeedbackEl = document.getElementById("quizFeedback");
-
-    const videoModalEl = document.getElementById("videoModal");
-    const closeVideoBtn = document.getElementById("closeVideoBtn");
-    const returnToLetterBtn = document.getElementById("returnToLetterBtn");
-    const youtubeIframe = document.getElementById("youtubeIframe");
-
-    const bgMusic = document.getElementById("bgMusic");
-    const audioToggleBtn = document.getElementById("audioToggleBtn");
-    const audioStatusText = document.getElementById("audioStatusText");
-    const heartsContainer = document.getElementById("heartsContainer");
 
     /* ==========================================================================
        INITIALIZATION
        ========================================================================== */
     document.addEventListener("DOMContentLoaded", () => {
-      initApp();
+      initContent();
+      initHeartsBackground();
+      initLockscreen();
+      initPhotosTimeline();
+      initScrollProgress();
+      initInteractiveClicks();
+      initYouTubeAPI();
     });
 
-    function initApp() {
-      // 1. Populate Configurable Text in UI
-      pinHintTextEl.textContent = CONFIG.PIN_HINT;
-      letterBadgeEl.textContent = CONFIG.LETTER_CONTENT.badge || "Celebrating You Today ✨";
-      letterHeadlineEl.textContent = CONFIG.LETTER_CONTENT.headline;
-      letterSalutationEl.textContent = CONFIG.LETTER_CONTENT.salutation;
-      letterSignatureEl.textContent = CONFIG.LETTER_CONTENT.signature;
+    function initContent() {
+      // Set hint
+      document.getElementById("lockHintText").textContent = CONFIG.PIN_HINT;
 
-      // Populate letter paragraphs
-      letterParagraphsEl.innerHTML = CONFIG.LETTER_CONTENT.paragraphs
+      // Set letter
+      document.getElementById("letterTitle").textContent = CONFIG.LETTER.headline;
+      document.getElementById("letterSub").textContent = CONFIG.LETTER.subtitle;
+      document.getElementById("letterSalutation").textContent = CONFIG.LETTER.salutation;
+      document.getElementById("letterSignoff").textContent = CONFIG.LETTER.signoff;
+
+      const letterContainer = document.getElementById("letterContent");
+      letterContainer.innerHTML = CONFIG.LETTER.paragraphs
         .map(p => `<p>${escapeHTML(p)}</p>`)
         .join("");
 
-      // Set audio source
-      if (CONFIG.MUSIC_URL) {
-        bgMusic.src = CONFIG.MUSIC_URL;
-      }
+      // Scroll down click
+      document.getElementById("scrollDownBtn").addEventListener("click", () => {
+        document.getElementById("photosTimeline").scrollIntoView({ behavior: "smooth" });
+      });
 
-      // 2. Build Background Photo Collage
-      buildPhotoCollage();
+      // Back to top click
+      document.getElementById("backToTopBtn").addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
 
-      // 3. Start Ambient Floating Hearts
-      spawnFloatingHearts();
-
-      // 4. Attach Event Listeners
-      setupLockscreenEvents();
-      setupAudioEvents();
-      setupQuizEvents();
-      setupVideoEvents();
+      // Blast confetti
+      document.getElementById("blastConfettiBtn").addEventListener("click", () => {
+        fireBigLoveConfetti();
+      });
     }
 
     /* ==========================================================================
-       PHOTO COLLAGE GENERATOR
+       YOUTUBE PLAYER API & PLAYLIST CONTROLS
+       Plays user's requested songs:
+       1) e1mOmdykmwI
+       2) o7A5BhnZ6H4
        ========================================================================== */
-    function buildPhotoCollage() {
-      collageGridEl.innerHTML = "";
-      const total = Math.max(1, CONFIG.TOTAL_PHOTOS || 12);
+    function initYouTubeAPI() {
+      // Load YouTube IFrame API
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      for (let i = 1; i <= total; i++) {
-        const item = document.createElement("div");
-        item.className = "collage-item";
+      window.onYouTubeIframeAPIReady = function() {
+        appState.ytPlayer = new YT.Player("ytPlayer", {
+          height: "200",
+          width: "200",
+          videoId: CONFIG.PLAYLIST[0].id,
+          playerVars: {
+            autoplay: 0,
+            controls: 0,
+            disablekb: 1,
+            enablejsapi: 1,
+            loop: 1,
+            modestbranding: 1,
+            playsinline: 1
+          },
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange
+          }
+        });
+      };
 
-        const img = document.createElement("img");
-        img.src = `images/photo${i}.jpg`;
-        img.alt = `Our Memory #${i}`;
-        img.loading = "lazy";
-        img.onerror = () => handleImageError(img, i);
+      // Music Bar Buttons
+      const toggleBtn = document.getElementById("musicToggleBtn");
+      const nextBtn = document.getElementById("musicNextBtn");
 
-        item.appendChild(img);
-        collageGridEl.appendChild(item);
+      toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        togglePlayPause();
+      });
+
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        playNextSong();
+      });
+
+      document.getElementById("musicWidget").addEventListener("click", () => {
+        togglePlayPause();
+      });
+    }
+
+    function onPlayerReady(event) {
+      appState.ytReady = true;
+      updateMusicUI();
+      // If user already unlocked before player ready, start playing!
+      if (appState.isUnlocked) {
+        playCurrentSong();
       }
     }
 
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        appState.isPlayingMusic = true;
+        document.getElementById("musicWidget").classList.add("is-playing");
+        document.getElementById("musicToggleBtn").textContent = "⏸️";
+      } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+        if (event.data === YT.PlayerState.ENDED) {
+          playNextSong();
+        } else {
+          appState.isPlayingMusic = false;
+          document.getElementById("musicWidget").classList.remove("is-playing");
+          document.getElementById("musicToggleBtn").textContent = "▶️";
+        }
+      }
+    }
+
+    function playCurrentSong() {
+      const currentTrack = CONFIG.PLAYLIST[appState.currentSongIndex];
+      updateMusicUI();
+
+      if (appState.ytPlayer && appState.ytReady && typeof appState.ytPlayer.loadVideoById === "function") {
+        appState.ytPlayer.loadVideoById(currentTrack.id);
+        appState.ytPlayer.playVideo();
+        appState.isPlayingMusic = true;
+      }
+    }
+
+    function togglePlayPause() {
+      if (!appState.ytPlayer || !appState.ytReady) return;
+
+      if (appState.isPlayingMusic) {
+        appState.ytPlayer.pauseVideo();
+        appState.isPlayingMusic = false;
+      } else {
+        appState.ytPlayer.playVideo();
+        appState.isPlayingMusic = true;
+      }
+    }
+
+    function playNextSong() {
+      appState.currentSongIndex = (appState.currentSongIndex + 1) % CONFIG.PLAYLIST.length;
+      playCurrentSong();
+    }
+
+    function updateMusicUI() {
+      const track = CONFIG.PLAYLIST[appState.currentSongIndex];
+      document.getElementById("musicBadge").textContent = `Our Song #${appState.currentSongIndex + 1}`;
+      document.getElementById("musicTitle").textContent = track.title;
+    }
+
     /* ==========================================================================
-       STAGE 1: LOCKSCREEN & PIN LOGIC
+       STAGE 1: LOCKSCREEN LOGIC (PASSWORD: 1405)
        ========================================================================== */
-    function setupLockscreenEvents() {
-      pinDigits.forEach((digitInput, idx) => {
-        // Handle direct typing
-        digitInput.addEventListener("input", (e) => {
-          const val = e.target.value;
-          if (val.length > 0) {
-            digitInput.classList.add("filled");
-            // Auto advance to next box
-            if (idx < pinDigits.length - 1) {
-              pinDigits[idx + 1].focus();
+    function initLockscreen() {
+      const digits = document.querySelectorAll(".pin-digit-box");
+      const errorMsg = document.getElementById("lockErrorMsg");
+      const submitBtn = document.getElementById("lockSubmitBtn");
+      const pinBoxGroup = document.getElementById("pinBoxGroup");
+
+      digits.forEach((input, idx) => {
+        input.addEventListener("input", (e) => {
+          if (e.target.value.length > 0) {
+            input.classList.add("filled");
+            if (idx < digits.length - 1) {
+              digits[idx + 1].focus();
             } else {
-              // Last box typed - check PIN automatically
-              verifyPIN();
+              checkPIN();
             }
           } else {
-            digitInput.classList.remove("filled");
+            input.classList.remove("filled");
           }
         });
 
-        // Handle backspace navigation
-        digitInput.addEventListener("keydown", (e) => {
-          if (e.key === "Backspace" && !digitInput.value && idx > 0) {
-            pinDigits[idx - 1].focus();
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace" && !input.value && idx > 0) {
+            digits[idx - 1].focus();
           } else if (e.key === "Enter") {
-            verifyPIN();
+            checkPIN();
           }
         });
 
-        // Handle copy-paste of 4 digits
-        digitInput.addEventListener("paste", (e) => {
+        input.addEventListener("paste", (e) => {
           e.preventDefault();
           const pasted = (e.clipboardData || window.clipboardData).getData("text").trim();
           if (/^\d{4}$/.test(pasted)) {
             pasted.split("").forEach((char, i) => {
-              if (pinDigits[i]) {
-                pinDigits[i].value = char;
-                pinDigits[i].classList.add("filled");
+              if (digits[i]) {
+                digits[i].value = char;
+                digits[i].classList.add("filled");
               }
             });
-            pinDigits[pinDigits.length - 1].focus();
-            verifyPIN();
+            digits[3].focus();
+            checkPIN();
           }
         });
       });
 
-      unlockBtn.addEventListener("click", () => {
-        verifyPIN();
+      submitBtn.addEventListener("click", () => {
+        checkPIN();
       });
-    }
 
-    function verifyPIN() {
-      const enteredPIN = Array.from(pinDigits).map(input => input.value).join("");
+      function checkPIN() {
+        const entered = Array.from(digits).map(d => d.value).join("");
+        if (entered === CONFIG.PIN) {
+          // Success!
+          onUnlockSuccess();
+        } else {
+          // Failure
+          onUnlockFailed();
+        }
+      }
 
-      if (enteredPIN === CONFIG.PIN) {
-        // Correct PIN!
-        onPINSuccess();
-      } else {
-        // Incorrect PIN!
-        onPINFailure();
+      function onUnlockSuccess() {
+        appState.isUnlocked = true;
+        fireBigLoveConfetti();
+
+        // Start playing YouTube music
+        playCurrentSong();
+
+        // Smooth transition
+        document.getElementById("lockscreen").classList.add("hidden-lock");
+        document.getElementById("mainApp").classList.add("revealed");
+
+        setTimeout(() => {
+          document.getElementById("lockscreen").style.display = "none";
+        }, 900);
+      }
+
+      function onUnlockFailed() {
+        pinBoxGroup.classList.remove("shake-box");
+        void pinBoxGroup.offsetWidth; // trigger reflow
+        pinBoxGroup.classList.add("shake-box");
+
+        const cuteErrors = [
+          "Oops, try again! 💕",
+          "Hint: Check the clue below ✨",
+          "Almost! You know this special date 🥰",
+          "Try again, my love 💕"
+        ];
+        errorMsg.textContent = cuteErrors[Math.floor(Math.random() * cuteErrors.length)];
+        errorMsg.classList.add("show");
+
+        setTimeout(() => {
+          digits.forEach(d => {
+            d.value = "";
+            d.classList.remove("filled");
+          });
+          digits[0].focus();
+        }, 350);
+
+        setTimeout(() => {
+          errorMsg.classList.remove("show");
+        }, 3500);
       }
     }
 
-    function onPINSuccess() {
-      // 1. Confetti Burst!
-      fireCelebrationConfetti();
+    /* ==========================================================================
+       STAGE 2: POPULATE 52 PHOTOS (VERY LONG SCROLL)
+       One photo at a time, surrounded by cute love, red hearts, and sweet words!
+       ========================================================================== */
+    function initPhotosTimeline() {
+      const container = document.getElementById("photosTimeline");
+      container.innerHTML = "";
 
-      // 2. Play Background Music
-      playAudio();
+      const total = CONFIG.TOTAL_PHOTOS || 52;
 
-      // 3. Smoothly fade out lockscreen & reveal main page
-      lockscreenEl.classList.add("hidden-stage");
-      mainStageEl.classList.add("visible-stage");
-      state.isUnlocked = true;
+      for (let i = 1; i <= total; i++) {
+        // Rotating affirmations and stickers
+        const affirmation = CONFIG.AFFIRMATIONS[(i - 1) % CONFIG.AFFIRMATIONS.length];
+        const stickerLeft = CONFIG.STICKERS[(i - 1) % CONFIG.STICKERS.length];
+        const stickerRight = CONFIG.STICKERS[(i * 3) % CONFIG.STICKERS.length];
 
-      // Clean up PIN inputs after transition
-      setTimeout(() => {
-        lockscreenEl.style.display = "none";
-      }, 850);
+        const card = document.createElement("article");
+        card.className = "memory-card-wrapper";
+        card.dataset.index = i;
+
+        card.innerHTML = `
+          <div class="memory-frame">
+            <!-- Cute washi tape at top -->
+            <div class="washi-tape">Memory #${i} ❤️</div>
+
+            <div class="memory-photo-container">
+              <!-- Cute floating stickers around photo -->
+              <span class="sticker-badge sticker-top-left">${stickerLeft}</span>
+              <span class="sticker-badge sticker-bottom-right">${stickerRight}</span>
+
+              <!-- Image pulling from images/photo${i}.jpg -->
+              <img
+                src="images/photo${i}.jpg"
+                alt="Memory #${i} with Tisha"
+                class="memory-img"
+                loading="lazy"
+                onerror="this.onerror=null; this.src=getFallbackSvg(${i});"
+              />
+            </div>
+
+            <div class="memory-meta">
+              <span class="memory-number-pill">Photo ${i} of ${total} 🌹</span>
+              
+              <!-- Prominent Affirmation -->
+              <h2 class="memory-affirmation-big">
+                <span>${escapeHTML(affirmation)}</span>
+              </h2>
+
+              <p class="memory-handwritten-note">
+                ${i % 2 === 0 ? "You make my whole heart smile, Tisha." : "Every second with you is my happiest place."}
+              </p>
+
+              <div class="memory-interactive-row">
+                <button class="like-memory-btn" onclick="toggleLikePhoto(this)">
+                  <span class="btn-heart-icon">🤍</span>
+                  <span class="btn-like-text">Send a Heart</span>
+                </button>
+                <div class="memory-cute-sparkles">🧸 💖 🌸</div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      }
+
+      // Intersection Observer for smooth reveal as user scrolls
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: "0px 0px -60px 0px",
+        threshold: 0.15
+      });
+
+      document.querySelectorAll(".memory-card-wrapper").forEach(el => observer.observe(el));
     }
 
-    function onPINFailure() {
-      // Shake animation
-      pinGroupEl.classList.remove("shake-animation");
-      void pinGroupEl.offsetWidth; // Force reflow
-      pinGroupEl.classList.add("shake-animation");
+    // Interactive button on each photo card
+    window.toggleLikePhoto = function(btn) {
+      btn.classList.toggle("liked");
+      const icon = btn.querySelector(".btn-heart-icon");
+      const text = btn.querySelector(".btn-like-text");
 
-      // Show error toast
-      const playfulErrors = [
-        "Oops, try again! 💕",
-        "Not quite, think back to that special day! 🥰",
-        "Almost there! Check the clue below ✨",
-        "Close! You know this date by heart 💕"
-      ];
-      const randomError = playfulErrors[Math.floor(Math.random() * playfulErrors.length)];
-      pinErrorEl.textContent = randomError;
-      pinErrorEl.classList.add("visible");
+      if (btn.classList.contains("liked")) {
+        icon.textContent = "❤️";
+        text.textContent = "Loved!";
+        // Fire mini confetti
+        if (typeof confetti === "function") {
+          const rect = btn.getBoundingClientRect();
+          confetti({
+            particleCount: 25,
+            spread: 45,
+            origin: {
+              x: (rect.left + rect.width / 2) / window.innerWidth,
+              y: (rect.top + rect.height / 2) / window.innerHeight
+            },
+            colors: ['#e02438', '#ff4d6d', '#ffccd5']
+          });
+        }
+      } else {
+        icon.textContent = "🤍";
+        text.textContent = "Send a Heart";
+      }
+    };
 
-      // Clear inputs and refocus first box
-      setTimeout(() => {
-        pinDigits.forEach(input => {
-          input.value = "";
-          input.classList.remove("filled");
-        });
-        pinDigits[0].focus();
-      }, 400);
+    /* ==========================================================================
+       SCROLL PROGRESS BAR
+       ========================================================================== */
+    function initScrollProgress() {
+      const progressBar = document.getElementById("scrollProgressBar");
+      window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = Math.min(100, Math.max(0, scrollPercent)) + "%";
+      }, { passive: true });
+    }
 
-      setTimeout(() => {
-        pinErrorEl.classList.remove("visible");
-      }, 3500);
+    /* ==========================================================================
+       RED HEARTS EVERYWHERE: CONTINUOUS FLOATING HEARTS
+       ========================================================================== */
+    function initHeartsBackground() {
+      const container = document.getElementById("floatingHeartsContainer");
+      const heartIcons = ["❤️", "💖", "💕", "🌹", "❤️", "❤️", "💞", "✨"];
+
+      function spawnHeart() {
+        const heart = document.createElement("div");
+        heart.className = "red-heart";
+        heart.textContent = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+
+        const leftPos = Math.random() * 100;
+        const duration = 7 + Math.random() * 8; // 7s to 15s
+        const size = 16 + Math.random() * 26; // 16px to 42px
+        const delay = Math.random() * 2;
+
+        heart.style.left = leftPos + "vw";
+        heart.style.fontSize = size + "px";
+        heart.style.animationDuration = duration + "s";
+        heart.style.animationDelay = delay + "s";
+
+        container.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, (duration + delay) * 1000);
+      }
+
+      // Initial batch
+      for (let i = 0; i < 20; i++) {
+        setTimeout(spawnHeart, i * 350);
+      }
+
+      // Continuous spawner
+      setInterval(spawnHeart, 600);
+    }
+
+    /* ==========================================================================
+       INTERACTIVE CLICK HEARTS
+       Clicking anywhere generates a floating pop-up heart!
+       ========================================================================== */
+    function initInteractiveClicks() {
+      const clickHearts = ["❤️", "💖", "💕", "🌹", "✨"];
+      window.addEventListener("click", (e) => {
+        // Ignore clicks on buttons/inputs
+        if (e.target.closest("button") || e.target.closest("input")) return;
+
+        const heart = document.createElement("div");
+        heart.className = "click-heart";
+        heart.textContent = clickHearts[Math.floor(Math.random() * clickHearts.length)];
+        heart.style.left = e.clientX + "px";
+        heart.style.top = e.clientY + "px";
+        heart.style.fontSize = (22 + Math.random() * 18) + "px";
+
+        document.body.appendChild(heart);
+        setTimeout(() => {
+          heart.remove();
+        }, 1200);
+      });
     }
 
     /* ==========================================================================
        CONFETTI CELEBRATIONS
        ========================================================================== */
-    function fireCelebrationConfetti() {
+    function fireBigLoveConfetti() {
       if (typeof confetti === "function") {
-        const count = 200;
+        const count = 250;
         const defaults = {
-          origin: { y: 0.7 },
-          colors: ['#b76e79', '#fce7eb', '#e8c4c4', '#dfb15b', '#ffffff', '#ffd1dc']
+          origin: { y: 0.65 },
+          colors: ['#e02438', '#ff4d6d', '#ff758f', '#ffccd5', '#ffffff', '#e5a93b']
         };
 
         function fire(particleRatio, opts) {
@@ -1442,273 +1699,22 @@
           }));
         }
 
-        fire(0.25, { spread: 26, startVelocity: 55 });
-        fire(0.2, { spread: 60 });
-        fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-        fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+        fire(0.25, { spread: 30, startVelocity: 55 });
+        fire(0.2, { spread: 65 });
+        fire(0.35, { spread: 100, decay: 0.92, scalar: 0.9 });
+        fire(0.1, { spread: 130, startVelocity: 25, decay: 0.93, scalar: 1.2 });
         fire(0.1, { spread: 120, startVelocity: 45 });
       }
     }
 
-    function fireQuizVictoryConfetti() {
-      if (typeof confetti === "function") {
-        confetti({
-          particleCount: 120,
-          spread: 80,
-          origin: { y: 0.6 },
-          colors: ['#dfb15b', '#b76e79', '#ffd1dc', '#fff']
-        });
-      }
-    }
-
-    /* ==========================================================================
-       AUDIO CONTROLLER & FALLBACK SYNTHESIZER
-       ========================================================================== */
-    function setupAudioEvents() {
-      audioToggleBtn.addEventListener("click", () => {
-        if (state.isPlayingMusic) {
-          pauseAudio();
-          state.audioMutedByUser = true;
-        } else {
-          playAudio();
-          state.audioMutedByUser = false;
-        }
-      });
-    }
-
-    function playAudio() {
-      bgMusic.play()
-        .then(() => {
-          setAudioState(true);
-        })
-        .catch(() => {
-          // If browser blocks audio file or URL is unavailable, start the gentle romantic synthesizer!
-          startGentleRomanticSynth();
-          setAudioState(true);
-        });
-    }
-
-    function pauseAudio() {
-      bgMusic.pause();
-      stopGentleRomanticSynth();
-      setAudioState(false);
-    }
-
-    function setAudioState(isPlaying) {
-      state.isPlayingMusic = isPlaying;
-      if (isPlaying) {
-        audioToggleBtn.classList.add("playing");
-        audioStatusText.textContent = "Music: On";
-      } else {
-        audioToggleBtn.classList.remove("playing");
-        audioStatusText.textContent = "Music: Muted";
-      }
-    }
-
-    // Web Audio API Romantic Chime Synthesizer Fallback
-    function startGentleRomanticSynth() {
-      if (state.synthInterval) return;
-      try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (!AudioCtx) return;
-        state.synthAudioCtx = new AudioCtx();
-
-        // Romantic pentatonic chord notes (C4, E4, G4, A4, C5, D5, E5)
-        const notes = [261.63, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25];
-        let noteIdx = 0;
-
-        state.synthInterval = setInterval(() => {
-          if (!state.isPlayingMusic || !state.synthAudioCtx) return;
-          const osc = state.synthAudioCtx.createOscillator();
-          const gain = state.synthAudioCtx.createGain();
-
-          osc.type = "sine";
-          osc.frequency.value = notes[noteIdx % notes.length];
-          noteIdx++;
-
-          gain.gain.setValueAtTime(0.04, state.synthAudioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, state.synthAudioCtx.currentTime + 1.8);
-
-          osc.connect(gain);
-          gain.connect(state.synthAudioCtx.destination);
-
-          osc.start();
-          osc.stop(state.synthAudioCtx.currentTime + 1.8);
-        }, 1200);
-      } catch (e) {
-        // Fallback silently if web audio is unavailable
-      }
-    }
-
-    function stopGentleRomanticSynth() {
-      if (state.synthInterval) {
-        clearInterval(state.synthInterval);
-        state.synthInterval = null;
-      }
-    }
-
-    /* ==========================================================================
-       STAGE 3: THE QUIZ MODAL
-       ========================================================================== */
-    function setupQuizEvents() {
-      openQuizBtn.addEventListener("click", () => {
-        openQuizModal();
-      });
-
-      closeQuizBtn.addEventListener("click", () => {
-        closeQuizModal();
-      });
-
-      // Close modal on background click
-      quizModalEl.addEventListener("click", (e) => {
-        if (e.target === quizModalEl) {
-          closeQuizModal();
-        }
-      });
-    }
-
-    function openQuizModal() {
-      state.currentQuizStep = 0;
-      renderCurrentQuizQuestion();
-      quizModalEl.classList.add("active");
-    }
-
-    function closeQuizModal() {
-      quizModalEl.classList.remove("active");
-    }
-
-    function renderCurrentQuizQuestion() {
-      const totalQuestions = CONFIG.QUIZ_DATA.length;
-      const current = CONFIG.QUIZ_DATA[state.currentQuizStep];
-
-      quizStepTextEl.textContent = `Question ${state.currentQuizStep + 1} of ${totalQuestions}`;
-      quizProgressBarEl.style.width = `${((state.currentQuizStep + 1) / totalQuestions) * 100}%`;
-      quizQuestionTextEl.textContent = current.question;
-      quizFeedbackEl.classList.remove("show");
-
-      // Render Options
-      quizOptionsContainerEl.innerHTML = "";
-      const letters = ["A", "B", "C", "D"];
-
-      current.choices.forEach((choiceText, index) => {
-        const btn = document.createElement("button");
-        btn.className = "quiz-option-btn";
-        btn.innerHTML = `
-          <span class="option-letter">${letters[index]}</span>
-          <span class="option-text">${escapeHTML(choiceText)}</span>
-        `;
-
-        btn.addEventListener("click", () => {
-          handleQuizAnswer(btn, index, current.correctIndex);
-        });
-
-        quizOptionsContainerEl.appendChild(btn);
-      });
-    }
-
-    function handleQuizAnswer(selectedBtn, chosenIndex, correctIndex) {
-      const allButtons = quizOptionsContainerEl.querySelectorAll(".quiz-option-btn");
-
-      if (chosenIndex === correctIndex) {
-        // Correct Answer!
-        selectedBtn.classList.add("correct-choice");
-        allButtons.forEach(btn => btn.style.pointerEvents = "none");
-
-        quizFeedbackEl.textContent = "That's right, my love! 💕";
-        quizFeedbackEl.classList.add("show");
-
-        setTimeout(() => {
-          state.currentQuizStep++;
-          if (state.currentQuizStep < CONFIG.QUIZ_DATA.length) {
-            renderCurrentQuizQuestion();
-          } else {
-            // All questions answered! Trigger confetti & transition to Stage 4 Finale
-            closeQuizModal();
-            fireQuizVictoryConfetti();
-            setTimeout(() => {
-              openVideoFinale();
-            }, 500);
-          }
-        }, 900);
-      } else {
-        // Incorrect Answer!
-        selectedBtn.classList.add("wrong-choice");
-        quizFeedbackEl.textContent = "Oops, try again! 💕";
-        quizFeedbackEl.classList.add("show");
-
-        setTimeout(() => {
-          selectedBtn.classList.remove("wrong-choice");
-        }, 600);
-      }
-    }
-
-    /* ==========================================================================
-       STAGE 4: THE FINALE (VIDEO MODAL)
-       ========================================================================== */
-    function setupVideoEvents() {
-      closeVideoBtn.addEventListener("click", () => {
-        closeVideoFinale();
-      });
-
-      returnToLetterBtn.addEventListener("click", () => {
-        closeVideoFinale();
-      });
-
-      videoModalEl.addEventListener("click", (e) => {
-        if (e.target === videoModalEl) {
-          closeVideoFinale();
-        }
-      });
-    }
-
-    function openVideoFinale() {
-      // Pause or lower background music while video plays
-      pauseAudio();
-
-      // Load YouTube iframe with autoplay
-      youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${CONFIG.YOUTUBE_VIDEO_ID}?autoplay=1&enablejsapi=1&rel=0`;
-
-      videoModalEl.classList.add("active");
-    }
-
-    function closeVideoFinale() {
-      videoModalEl.classList.remove("active");
-      // Stop video playback
-      youtubeIframe.src = "";
-
-      // Restore background music if user previously had it unmuted
-      if (!state.audioMutedByUser) {
-        playAudio();
-      }
-    }
-
-    /* ==========================================================================
-       AMBIENT FLOATING HEARTS
-       ========================================================================== */
-    function spawnFloatingHearts() {
-      const heartSymbols = ["♥", "♡", "❤", "💕"];
-      setInterval(() => {
-        if (document.hidden) return;
-        const heart = document.createElement("div");
-        heart.className = "floating-heart";
-        heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-        heart.style.left = `${Math.random() * 95}vw`;
-        heart.style.fontSize = `${Math.random() * 16 + 14}px`;
-        heart.style.animationDuration = `${Math.random() * 6 + 9}s`;
-
-        heartsContainer.appendChild(heart);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 15000);
-      }, 900);
-    }
-
-    /* Helper: Escape HTML to protect against XSS */
+    // Helper to sanitize HTML strings
     function escapeHTML(str) {
-      const div = document.createElement("div");
-      div.textContent = str;
-      return div.innerHTML;
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
   </script>
 </body>
