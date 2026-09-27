@@ -10,10 +10,10 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Google Fonts: Playfair Display, Caveat (Cute handwritten), and Poppins -->
+  <!-- Google Fonts: Playfair Display, Great Vibes (ultra-romantic calligraphy), Caveat, Sacramento, Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400;1,600;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Sacramento&display=swap" rel="stylesheet" />
 
   <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -315,13 +315,13 @@
     .lock-card {
       position: relative;
       width: 100%;
-      max-width: 460px;
-      background: rgba(255, 255, 255, 0.95);
+      max-width: 580px;
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 2px solid rgba(255, 117, 143, 0.5);
-      border-radius: 32px;
-      padding: 48px 36px;
+      border: 2px solid rgba(255, 117, 143, 0.55);
+      border-radius: 36px;
+      padding: 44px 32px;
       box-shadow: 0 25px 70px rgba(224, 36, 56, 0.22);
       text-align: center;
       color: var(--text-dark);
@@ -330,16 +330,16 @@
 
     /* Cute red heart envelope emblem */
     .lock-heart-badge {
-      width: 86px;
-      height: 86px;
-      margin: 0 auto 20px auto;
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 16px auto;
       border-radius: 50%;
       background: linear-gradient(135deg, #ff4d6d 0%, #e02438 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-size: 42px;
+      font-size: 40px;
       box-shadow: 0 10px 28px rgba(224, 36, 56, 0.45);
       animation: heartbeatGlow 2.2s ease-in-out infinite;
     }
@@ -353,11 +353,116 @@
       100% { transform: scale(1); }
     }
 
-    .lock-heading {
-      font-size: 32px;
-      font-weight: 700;
+    /* Grand Animated Wish & Very Big Fonts */
+    .lock-animated-wish {
+      margin: 4px 0 18px 0;
+      position: relative;
+    }
+
+    .wish-caption-tag {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
       color: var(--primary-red);
-      margin-bottom: 8px;
+      opacity: 0.9;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .lock-heading-birthday {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(36px, 6.5vw, 54px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, #b31224 0%, #e02438 40%, #c9184a 70%, #ff2a4b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(224, 36, 56, 0.2));
+      animation: wishShimmerGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes wishShimmerGlow {
+      0% {
+        filter: drop-shadow(0 2px 8px rgba(224, 36, 56, 0.2));
+        transform: translateY(0);
+      }
+      100% {
+        filter: drop-shadow(0 5px 18px rgba(224, 36, 56, 0.38));
+        transform: translateY(-2px);
+      }
+    }
+
+    .lock-name-tisha-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 4px 0 12px 0;
+      padding: 0 6px;
+    }
+
+    .lock-name-tisha {
+      font-family: 'Great Vibes', 'Alex Brush', cursive;
+      font-size: clamp(66px, 13vw, 102px);
+      line-height: 1.05;
+      font-weight: 400;
+      background: linear-gradient(135deg, #ff2a4b 0%, #e02438 30%, #b31224 60%, #ff758f 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 5s ease infinite, gentleHeartPulse 3s ease-in-out infinite alternate;
+      filter: drop-shadow(0 6px 20px rgba(224, 36, 56, 0.35));
+      padding: 0 12px;
+      user-select: none;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes gentleHeartPulse {
+      0% {
+        transform: scale(1);
+        filter: drop-shadow(0 5px 16px rgba(224, 36, 56, 0.3));
+      }
+      100% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 8px 26px rgba(224, 36, 56, 0.55));
+      }
+    }
+
+    .tisha-floating-heart {
+      font-size: 26px;
+      display: inline-block;
+      animation: floatSparkle 2.6s ease-in-out infinite alternate;
+    }
+
+    .tisha-floating-heart.left-heart {
+      animation-delay: 0s;
+    }
+
+    .tisha-floating-heart.right-heart {
+      animation-delay: 1.3s;
+    }
+
+    @keyframes floatSparkle {
+      0% {
+        transform: translateY(4px) scale(0.9) rotate(-8deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-8px) scale(1.18) rotate(8deg);
+        opacity: 1;
+      }
     }
 
     .lock-for-tisha {
@@ -366,16 +471,17 @@
       font-size: 26px;
       color: var(--deep-red);
       background: var(--blush);
-      padding: 3px 20px;
+      padding: 4px 22px;
       border-radius: 999px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       border: 1px dashed var(--rose-pink);
     }
 
     .lock-prompt {
-      font-size: 14.5px;
+      font-size: 15px;
       color: var(--text-muted);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
+      font-weight: 500;
     }
 
     /* 4-Digit Input Fields */
@@ -491,7 +597,7 @@
       width: 100%;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     #mainApp.revealed {
@@ -499,14 +605,224 @@
       visibility: visible;
     }
 
+    #mainApp.revealed .grand-birthday-hero {
+      animation: heroEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    #mainApp.revealed .letter-section {
+      animation: letterEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
+    }
+
+    @keyframes heroEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(35px) scale(0.96);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes letterEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .page-wrapper {
-      max-width: 860px;
+      max-width: 880px;
       margin: 0 auto;
-      padding: 80px 20px 140px 20px;
+      padding: 60px 20px 140px 20px;
     }
 
     /* ==========================================================================
-       SECTION 1: THE BIRTHDAY & LOVE LETTER
+       STAGE 2: GRAND CELEBRATION WISH (UNLOCKED HERO)
+       Bigger "Happy Birthday" & Huge Premium "Tisha" with Royal Animations
+       ========================================================================== */
+    .grand-birthday-hero {
+      text-align: center;
+      margin-bottom: 50px;
+      padding: 20px 10px 10px 10px;
+      position: relative;
+    }
+
+    .grand-hero-sparkles-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .twinkle-sparkle, .twinkle-heart, .twinkle-rose {
+      display: inline-block;
+      animation: floatSparkle 2.6s ease-in-out infinite alternate;
+    }
+
+    .twinkle-sparkle:nth-child(1) { animation-delay: 0s; }
+    .twinkle-heart:nth-child(2) { animation-delay: 0.4s; }
+    .twinkle-rose:nth-child(3) { animation-delay: 0.8s; font-size: 30px; }
+    .twinkle-heart:nth-child(4) { animation-delay: 1.2s; }
+    .twinkle-sparkle:nth-child(5) { animation-delay: 1.6s; }
+
+    .hero-royal-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, rgba(255, 229, 236, 0.95), rgba(255, 240, 243, 0.98));
+      border: 1.5px solid rgba(224, 36, 56, 0.28);
+      border-radius: 9999px;
+      padding: 7px 24px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--deep-red);
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 18px rgba(224, 36, 56, 0.12);
+      margin-bottom: 18px;
+    }
+
+    .royal-crown {
+      font-size: 17px;
+      animation: gentleHeartPulse 2s ease-in-out infinite alternate;
+    }
+
+    .grand-wish-hbd {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 8.5vw, 84px);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.05;
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, #8f0e1d 0%, #b31224 25%, #e02438 50%, #ff4d6d 75%, #8f0e1d 100%);
+      background-size: 250% 250%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 5s ease infinite;
+      filter: drop-shadow(0 4px 16px rgba(224, 36, 56, 0.26));
+    }
+
+    .grand-tisha-wrapper {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      margin: -6px 0 16px 0;
+    }
+
+    .grand-tisha-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(86px, 17vw, 142px);
+      font-weight: 400;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #e02438 0%, #ff2a4b 22%, #ff758f 45%, #ffd166 65%, #c9184a 82%, #b31224 100%);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 6s ease infinite, grandTishaPulse 3.2s ease-in-out infinite alternate;
+      filter: drop-shadow(0 6px 24px rgba(224, 36, 56, 0.42));
+      padding: 0 16px;
+    }
+
+    @keyframes grandTishaPulse {
+      0% {
+        transform: scale(0.97) rotate(-0.5deg);
+      }
+      100% {
+        transform: scale(1.03) rotate(0.5deg);
+      }
+    }
+
+    .tisha-floating-wing {
+      font-size: clamp(28px, 5.5vw, 46px);
+      display: inline-block;
+      filter: drop-shadow(0 4px 12px rgba(224, 36, 56, 0.35));
+    }
+
+    .tisha-floating-wing.left-wing {
+      animation: floatingWingLeft 3s ease-in-out infinite alternate;
+    }
+
+    .tisha-floating-wing.right-wing {
+      animation: floatingWingRight 3s ease-in-out infinite alternate 1.2s;
+    }
+
+    @keyframes floatingWingLeft {
+      0% {
+        transform: translateY(4px) rotate(-10deg) scale(0.95);
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateY(-8px) rotate(6deg) scale(1.15);
+        opacity: 1;
+      }
+    }
+
+    @keyframes floatingWingRight {
+      0% {
+        transform: translateY(4px) rotate(10deg) scale(0.95);
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateY(-8px) rotate(-6deg) scale(1.15);
+        opacity: 1;
+      }
+    }
+
+    .grand-wish-dedication {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(17px, 2.5vw, 22px);
+      color: var(--deep-red);
+      max-width: 660px;
+      margin: 0 auto 24px auto;
+      line-height: 1.55;
+      opacity: 0.95;
+    }
+
+    .grand-hero-actions {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .grand-shower-btn {
+      padding: 13px 30px;
+      background: linear-gradient(135deg, #ff4d6d 0%, #e02438 55%, #b31224 100%);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(224, 36, 56, 0.35);
+      transition: var(--transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .grand-shower-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 34px rgba(224, 36, 56, 0.5);
+      filter: brightness(1.06);
+    }
+
+    .grand-shower-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* ==========================================================================
+       SECTION 1: THE LUXURY BIRTHDAY & LOVE LETTER FOR TISHA
        ========================================================================== */
     .letter-section {
       margin-bottom: 80px;
@@ -515,41 +831,120 @@
 
     .letter-paper-card {
       position: relative;
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 2px solid rgba(255, 117, 143, 0.45);
-      border-radius: 36px;
-      padding: 58px 44px;
-      box-shadow: var(--shadow-float);
+      background: linear-gradient(175deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 249, 0.96) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 2px solid rgba(224, 36, 56, 0.28);
+      border-radius: 38px;
+      padding: 68px 52px 52px 52px;
+      box-shadow: 0 30px 75px rgba(179, 18, 36, 0.16),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+                  inset 0 0 40px rgba(255, 229, 236, 0.35);
       color: var(--text-dark);
       text-align: left;
     }
 
     @media (max-width: 640px) {
       .letter-paper-card {
-        padding: 42px 24px;
-        border-radius: 26px;
+        padding: 56px 24px 36px 24px;
+        border-radius: 28px;
       }
     }
 
-    /* Red wax seal ribbon */
+    /* Filigree corner ornaments */
+    .corner-filigree {
+      position: absolute;
+      font-size: 26px;
+      color: rgba(224, 36, 56, 0.25);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      transition: color 0.3s ease;
+    }
+
+    .corner-filigree.top-left { top: 16px; left: 18px; }
+    .corner-filigree.top-right { top: 16px; right: 18px; transform: scaleX(-1); }
+    .corner-filigree.bottom-left { bottom: 16px; left: 18px; transform: scaleY(-1); }
+    .corner-filigree.bottom-right { bottom: 16px; right: 18px; transform: scale(-1); }
+
+    .letter-paper-card:hover .corner-filigree {
+      color: rgba(224, 36, 56, 0.45);
+    }
+
+    /* Red wax seal with golden ring & ribbon tails */
     .letter-seal-ribbon {
       position: absolute;
-      top: -30px;
+      top: -36px;
       left: 50%;
       transform: translateX(-50%);
-      width: 62px;
-      height: 62px;
-      background: linear-gradient(135deg, #e02438 0%, #8f0e1d 100%);
-      border: 3px solid #ffccd5;
+      width: 72px;
+      height: 72px;
+      background: radial-gradient(circle at 35% 35%, #ff4d6d 0%, #e02438 45%, #8f0e1d 100%);
+      border: 3.5px solid #fff;
+      outline: 2px solid rgba(224, 36, 56, 0.4);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 10px 30px rgba(179, 18, 36, 0.5), inset 0 2px 6px rgba(255, 255, 255, 0.5);
+      animation: waxSealGlow 4s ease-in-out infinite alternate;
+      z-index: 5;
+    }
+
+    @keyframes waxSealGlow {
+      0% {
+        box-shadow: 0 10px 28px rgba(179, 18, 36, 0.45);
+      }
+      100% {
+        box-shadow: 0 12px 36px rgba(224, 36, 56, 0.7), 0 0 20px rgba(255, 117, 143, 0.5);
+      }
+    }
+
+    .seal-inner-heart {
+      font-size: 32px;
       color: #fff;
-      font-size: 28px;
-      box-shadow: 0 8px 24px rgba(179, 18, 36, 0.45);
+      animation: gentleHeartPulse 2.4s ease-in-out infinite alternate;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    .seal-ribbon-tails {
+      position: absolute;
+      top: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32px;
+      height: 22px;
+      pointer-events: none;
+    }
+
+    .seal-ribbon-tails::before,
+    .seal-ribbon-tails::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 14px;
+      height: 20px;
+      background: linear-gradient(180deg, #b31224 0%, #8f0e1d 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+    }
+
+    .seal-ribbon-tails::before {
+      left: 2px;
+      transform: rotate(14deg);
+    }
+
+    .seal-ribbon-tails::after {
+      right: 2px;
+      transform: rotate(-14deg);
+    }
+
+    .letter-header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
     }
 
     .letter-tagline {
@@ -564,22 +959,39 @@
       letter-spacing: 1.2px;
       padding: 6px 18px;
       border-radius: 9999px;
-      margin-bottom: 18px;
+      border: 1px dashed rgba(224, 36, 56, 0.35);
+    }
+
+    .letter-date-pill {
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      color: var(--crimson);
+      font-weight: 700;
     }
 
     .letter-main-title {
-      font-size: 44px;
-      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5.5vw, 46px);
+      font-weight: 800;
       color: var(--primary-red);
       line-height: 1.2;
       margin-bottom: 8px;
       letter-spacing: -0.5px;
     }
 
-    @media (max-width: 640px) {
-      .letter-main-title {
-        font-size: 32px;
-      }
+    .letter-title-pre {
+      color: var(--deep-red);
+    }
+
+    .letter-title-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.35em;
+      font-weight: 400;
+      background: linear-gradient(135deg, #e02438 0%, #ff4d6d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 0 4px;
+      filter: drop-shadow(0 2px 8px rgba(224, 36, 56, 0.25));
     }
 
     .letter-subtitle-cute {
@@ -587,15 +999,31 @@
       font-size: 28px;
       color: var(--crimson);
       margin-bottom: 24px;
+      line-height: 1.3;
     }
 
     .letter-divider-hearts {
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 14px;
       color: var(--rose-pink);
       font-size: 18px;
       margin-bottom: 32px;
+    }
+
+    .div-gem {
+      font-size: 14px;
+      color: var(--gold-accent);
+      animation: floatSparkle 2s ease-in-out infinite alternate;
+    }
+
+    .div-heart {
+      animation: gentleHeartPulse 2.5s ease-in-out infinite alternate;
+    }
+
+    .div-heart.center-big {
+      font-size: 24px;
     }
 
     .letter-divider-hearts::before,
@@ -603,36 +1031,70 @@
       content: '';
       flex: 1;
       height: 1.5px;
-      background: linear-gradient(to right, transparent, rgba(224, 36, 56, 0.4), transparent);
+      background: linear-gradient(to right, transparent, rgba(224, 36, 56, 0.45), transparent);
     }
 
     .letter-salutation-text {
       font-family: 'Playfair Display', serif;
-      font-size: 26px;
+      font-size: 28px;
       font-style: italic;
       color: var(--primary-red);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       display: block;
+      font-weight: 700;
     }
 
     .letter-content-text {
       font-size: 17.5px;
-      line-height: 1.9;
-      color: #3f2a31;
+      line-height: 1.95;
+      color: #352128;
     }
 
-    .letter-content-text p {
-      margin-bottom: 22px;
+    .letter-para {
+      margin-bottom: 24px;
+      position: relative;
     }
 
-    .letter-content-text p:last-child {
+    .letter-para:last-child {
       margin-bottom: 0;
     }
 
+    .letter-para.first-para::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      line-height: 0.85;
+      float: left;
+      padding-right: 12px;
+      padding-top: 4px;
+      color: var(--primary-red);
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(224, 36, 56, 0.25);
+    }
+
+    .love-highlight {
+      background: linear-gradient(120deg, rgba(255, 182, 193, 0.35) 0%, rgba(255, 117, 143, 0.3) 100%);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 600;
+      color: #2b1219;
+      box-shadow: inset 0 -2px 0 rgba(224, 36, 56, 0.4);
+      transition: background 0.3s ease;
+    }
+
+    .love-highlight.strong {
+      background: linear-gradient(120deg, rgba(255, 117, 143, 0.4) 0%, rgba(255, 77, 109, 0.35) 100%);
+      font-weight: 700;
+      color: var(--deep-red);
+      box-shadow: inset 0 -3px 0 var(--primary-red);
+    }
+
     .letter-signoff {
-      margin-top: 36px;
-      padding-top: 24px;
-      border-top: 1px dashed rgba(224, 36, 56, 0.25);
+      margin-top: 40px;
+      padding-top: 26px;
+      border-top: 1.5px dashed rgba(224, 36, 56, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .signoff-note {
@@ -642,43 +1104,84 @@
       font-weight: 700;
     }
 
+    .signoff-signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      color: var(--deep-red);
+      margin-left: 20px;
+      filter: drop-shadow(0 2px 6px rgba(224, 36, 56, 0.2));
+    }
+
+    .signoff-stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(255, 229, 236, 0.8), rgba(255, 240, 243, 0.95));
+      border: 1px dashed var(--primary-red);
+      border-radius: 9999px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--deep-red);
+      font-weight: 600;
+      align-self: flex-start;
+      margin-top: 6px;
+    }
+
     .scroll-down-invitation {
-      margin-top: 40px;
-      padding: 16px;
-      background: linear-gradient(135deg, rgba(255, 229, 236, 0.7), rgba(255, 240, 243, 0.9));
-      border: 1.5px dashed var(--rose-pink);
-      border-radius: 20px;
+      margin-top: 44px;
+      padding: 20px 18px;
+      background: linear-gradient(135deg, rgba(255, 229, 236, 0.85), rgba(255, 240, 243, 0.95));
+      border: 2px dashed var(--rose-pink);
+      border-radius: 24px;
       text-align: center;
       cursor: pointer;
       transition: var(--transition-smooth);
+      position: relative;
+      box-shadow: 0 8px 24px rgba(224, 36, 56, 0.08);
     }
 
     .scroll-down-invitation:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(224, 36, 56, 0.15);
+      box-shadow: 0 14px 32px rgba(224, 36, 56, 0.2);
       background: #fff;
+      border-color: var(--primary-red);
+    }
+
+    .scroll-invitation-badge {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--primary-red);
+      background: #fff;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      border: 1px solid rgba(224, 36, 56, 0.25);
+      margin-bottom: 8px;
     }
 
     .scroll-invitation-title {
       font-family: 'Caveat', cursive;
-      font-size: 28px;
+      font-size: 30px;
       color: var(--primary-red);
       font-weight: 700;
       margin-bottom: 4px;
     }
 
     .scroll-invitation-sub {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--text-muted);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
+      font-weight: 500;
     }
 
     .bouncing-arrow {
       animation: bounceDown 1.8s infinite;
-      font-size: 20px;
+      font-size: 22px;
       display: inline-block;
       color: var(--primary-red);
     }
@@ -1180,8 +1683,19 @@
     <div class="lock-card">
       <!-- Heart Emblem -->
       <div class="lock-heart-badge">❤️</div>
-      <h1 class="lock-heading">Happy Birthday!</h1>
-      <div class="lock-for-tisha">Special Surprise for Tisha 🌹</div>
+
+      <!-- Grand Animated Birthday Wish with Very Big Fonts -->
+      <div class="lock-animated-wish">
+        <div class="wish-caption-tag">✨ A very special celebration ✨</div>
+        <h1 class="lock-heading-birthday">Happy Birthday</h1>
+        <div class="lock-name-tisha-wrapper">
+          <span class="tisha-floating-heart left-heart">💖</span>
+          <span class="lock-name-tisha">Tisha</span>
+          <span class="tisha-floating-heart right-heart">🌹</span>
+        </div>
+      </div>
+
+      <div class="lock-for-tisha">Special Wish for Tisha 🌹</div>
       <p class="lock-prompt">Enter Password</p>
 
       <!-- 4-Digit Input Fields -->
@@ -1203,51 +1717,110 @@
 
       <!-- Unlock Action Button -->
       <button class="lock-submit-btn" id="lockSubmitBtn">
-        <span>Unlock My Surprise ❤️</span>
+        <span>Unlock My Website ❤️</span>
         <span>→</span>
       </button>
     </div>
   </section>
 
   <!-- ========================================================================
-       STAGE 2 & 3: MAIN APP (LOVE LETTER & 52-PHOTO LOVE SCROLL)
+       STAGE 2 & 3: MAIN APP (GRAND BIRTHDAY WISH, LOVE LETTER & 52-PHOTO LOVE SCROLL)
        ======================================================================== -->
   <main id="mainApp">
     <div class="page-wrapper">
 
       <!-- ====================================================================
-           THE BIRTHDAY & LOVE LETTER FOR TISHA
+           STAGE 2: GRAND CELEBRATION WISH (THE MAJESTIC UNLOCKED GREETING)
+           Bigger "Happy Birthday" & Huge Premium "Tisha" with Royal Animations
+           ==================================================================== -->
+      <section class="grand-birthday-hero" id="grandBirthdayHero">
+        <div class="grand-hero-sparkles-row">
+          <span class="twinkle-sparkle">✨</span>
+          <span class="twinkle-heart">💖</span>
+          <span class="twinkle-rose">🌹</span>
+          <span class="twinkle-heart">💖</span>
+          <span class="twinkle-sparkle">✨</span>
+        </div>
+
+        <div class="hero-royal-pill">
+          <span class="royal-crown">👑</span>
+          <span>A Royal Birthday Celebration</span>
+          <span class="royal-crown">👑</span>
+        </div>
+
+        <h1 class="grand-wish-hbd">Happy Birthday</h1>
+
+        <div class="grand-tisha-wrapper">
+          <span class="tisha-floating-wing left-wing">💖</span>
+          <span class="grand-tisha-name" id="grandTishaName">Tisha</span>
+          <span class="tisha-floating-wing right-wing">🌹</span>
+        </div>
+
+        <p class="grand-wish-dedication">
+          To the love of my life, my safe space, and my greatest blessing in this entire universe ✨
+        </p>
+
+        <div class="grand-hero-actions">
+          <button class="grand-shower-btn" id="heroShowerBtn" type="button">
+            <span>✨ Shower Tisha with Love & Confetti! 💖</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           STAGE 2: THE LUXURY BIRTHDAY & LOVE LETTER FOR TISHA
            ==================================================================== -->
       <section class="letter-section">
         <article class="letter-paper-card">
-          <!-- Wax Seal -->
-          <div class="letter-seal-ribbon">❤️</div>
+          <!-- Ornate Filigree Corner Accents -->
+          <div class="corner-filigree top-left" aria-hidden="true">❦</div>
+          <div class="corner-filigree top-right" aria-hidden="true">❦</div>
+          <div class="corner-filigree bottom-left" aria-hidden="true">❦</div>
+          <div class="corner-filigree bottom-right" aria-hidden="true">❦</div>
 
-          <div class="letter-tagline">To The Love Of My Life ✨</div>
-          <h1 class="letter-main-title" id="letterTitle">Happy Birthday, Tisha! ❤️</h1>
+          <!-- Red wax seal with golden ring & ribbon tails -->
+          <div class="letter-seal-ribbon">
+            <span class="seal-inner-heart">❤️</span>
+            <div class="seal-ribbon-tails"></div>
+          </div>
+
+          <div class="letter-header-meta">
+            <div class="letter-tagline">To The Love Of My Life ✨</div>
+            <div class="letter-date-pill">Special Birthday Edition 🌹</div>
+          </div>
+
+          <h2 class="letter-main-title" id="letterTitle">Happy Birthday, Tisha! ❤️</h2>
           <p class="letter-subtitle-cute" id="letterSub">You are the most precious gift the universe ever gave me</p>
 
           <div class="letter-divider-hearts">
-            <span>❤️</span>
-            <span>💖</span>
-            <span>❤️</span>
+            <span class="div-gem">✨</span>
+            <span class="div-heart">❤️</span>
+            <span class="div-heart center-big">💖</span>
+            <span class="div-heart">❤️</span>
+            <span class="div-gem">✨</span>
           </div>
 
           <div class="letter-salutation-text" id="letterSalutation">My Dearest Tisha,</div>
 
           <div class="letter-content-text" id="letterContent">
-            <!-- Rendered from CONFIG.LETTER_PARAGRAPHS -->
+            <!-- Rendered from CONFIG.LETTER_PARAGRAPHS with highlights -->
           </div>
 
           <div class="letter-signoff">
             <div class="signoff-note" id="letterSignoff">Forever & Always Yours, with all my heart ❤️</div>
+            <div class="signoff-signature" id="letterSignature">— Mahadi</div>
+            <div class="signoff-stamp">
+              <span class="stamp-icon">💌</span>
+              <span>100% Certified Pure Love</span>
+            </div>
           </div>
 
           <!-- Invitation to the 52 Photos Scroll -->
           <div class="scroll-down-invitation" id="scrollDownBtn">
+            <div class="scroll-invitation-badge">🌹 Our Story of 52 Memories 🌹</div>
             <div class="scroll-invitation-title">Ready for your 52 memories? 👇</div>
             <div class="scroll-invitation-sub">
-              <span>Scroll down to walk through all 52 photos filled with love</span>
+              <span>Scroll down to walk through all 52 photos filled with love and sweet words</span>
               <span class="bouncing-arrow">↓</span>
             </div>
           </div>
@@ -1330,7 +1903,8 @@
           "I wanted to build you this little world, filled with red hearts and all 52 of our special moments, just to remind you how deeply and endlessly you are cherished.",
           "You are the best person I have met. You make my worst days peaceful and my best days unforgettable. Happy Birthday, my love! Here's to you, to us, and to a lifetime of love."
         ],
-        signoff: "Forever & Always Yours, with all my love ❤️"
+        signoff: "Forever & Always Yours, with all my love ❤️",
+        signature: "— Mahadi"
       },
 
       // Heartfelt rotating captions & affirmations around the 52 photos
@@ -1374,6 +1948,7 @@
       isUnlocked: false,
       currentSongIndex: 0,
       isPlayingMusic: false,
+      isMuted: true,
       ytPlayer: null,
       ytReady: false,
       bottomBlastTriggered: false
@@ -1397,16 +1972,48 @@
       // Set hint
       document.getElementById("lockHintText").textContent = CONFIG.PIN_HINT;
 
-      // Set letter
-      document.getElementById("letterTitle").textContent = CONFIG.LETTER.headline;
+      // Set letter title with luxurious styling
+      const letterTitleEl = document.getElementById("letterTitle");
+      if (letterTitleEl) {
+        letterTitleEl.innerHTML = `<span class="letter-title-pre">Happy Birthday, </span><span class="letter-title-name">Tisha!</span> <span class="letter-title-heart">❤️</span>`;
+      }
       document.getElementById("letterSub").textContent = CONFIG.LETTER.subtitle;
       document.getElementById("letterSalutation").textContent = CONFIG.LETTER.salutation;
       document.getElementById("letterSignoff").textContent = CONFIG.LETTER.signoff;
+      const signatureEl = document.getElementById("letterSignature");
+      if (signatureEl && CONFIG.LETTER.signature) {
+        signatureEl.textContent = CONFIG.LETTER.signature;
+      }
 
       const letterContainer = document.getElementById("letterContent");
       letterContainer.innerHTML = CONFIG.LETTER.paragraphs
-        .map(p => `<p>${escapeHTML(p)}</p>`)
+        .map((p, idx) => {
+          let formatted = escapeHTML(p);
+          formatted = formatted
+            .replace("the most gorgeous, sweet, and wonderfully kind person", '<span class="love-highlight">the most gorgeous, sweet, and wonderfully kind person</span>')
+            .replace("deeply and endlessly cherished", '<span class="love-highlight">deeply and endlessly cherished</span>')
+            .replace("the best person I have met", '<span class="love-highlight">the best person I have met</span>')
+            .replace("Happy Birthday, my love!", '<span class="love-highlight strong">Happy Birthday, my love!</span>');
+          return `<p class="letter-para ${idx === 0 ? 'first-para' : ''}">${formatted}</p>`;
+        })
         .join("");
+
+      // Interactive celebratory shower button in grand hero
+      const heroShowerBtn = document.getElementById("heroShowerBtn");
+      if (heroShowerBtn) {
+        heroShowerBtn.addEventListener("click", () => {
+          playRomanticChimeSound();
+          if (typeof confetti === "function") {
+            confetti({
+              particleCount: 95,
+              spread: 110,
+              origin: { y: 0.38 },
+              colors: ['#e02438', '#ff2a4b', '#ff758f', '#ffccd5', '#ffd700'],
+              scalar: 1.15
+            });
+          }
+        });
+      }
 
       // Scroll down click
       document.getElementById("scrollDownBtn").addEventListener("click", () => {
@@ -1443,7 +2050,8 @@
           width: "200",
           videoId: CONFIG.PLAYLIST[0].id,
           playerVars: {
-            autoplay: 0,
+            autoplay: 1,
+            mute: 1, // Start muted on landing page so browsers allow instant autoplay
             controls: 0,
             disablekb: 1,
             enablejsapi: 1,
@@ -1475,31 +2083,70 @@
       document.getElementById("musicWidget").addEventListener("click", () => {
         togglePlayPause();
       });
+
+      // Browser interaction fallback: if browser paused autoplay, first interaction initiates muted playback
+      const startMutedFallback = () => {
+        if (appState.ytPlayer && appState.ytReady && !appState.isPlayingMusic && !appState.isUnlocked) {
+          try {
+            appState.ytPlayer.mute();
+            appState.ytPlayer.playVideo();
+            appState.isPlayingMusic = true;
+            updateMusicUI();
+          } catch (e) {}
+        }
+      };
+      window.addEventListener("pointerdown", startMutedFallback, { once: true });
     }
 
     function onPlayerReady(event) {
       appState.ytReady = true;
-      updateMusicUI();
-      // If user already unlocked before player ready, start playing!
+
+      // Start playing right when user lands on page, muted as requested
+      try {
+        event.target.mute();
+        event.target.playVideo();
+        appState.isMuted = true;
+        appState.isPlayingMusic = true;
+      } catch (err) {
+        console.log("Autoplay mute initiation:", err);
+      }
+
+      // If user already unlocked before player became ready, unmute immediately
       if (appState.isUnlocked) {
-        playCurrentSong();
+        unmuteAndPlay();
+      } else {
+        updateMusicUI();
       }
     }
 
     function onPlayerStateChange(event) {
       if (event.data === YT.PlayerState.PLAYING) {
         appState.isPlayingMusic = true;
-        document.getElementById("musicWidget").classList.add("is-playing");
-        document.getElementById("musicToggleBtn").textContent = "⏸️";
+        updateMusicUI();
       } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
         if (event.data === YT.PlayerState.ENDED) {
           playNextSong();
         } else {
           appState.isPlayingMusic = false;
-          document.getElementById("musicWidget").classList.remove("is-playing");
-          document.getElementById("musicToggleBtn").textContent = "▶️";
+          updateMusicUI();
         }
       }
+    }
+
+    function unmuteAndPlay() {
+      if (!appState.ytPlayer || !appState.ytReady) return;
+      try {
+        appState.ytPlayer.unMute();
+        appState.ytPlayer.setVolume(100);
+        if (typeof appState.ytPlayer.playVideo === "function") {
+          appState.ytPlayer.playVideo();
+        }
+        appState.isMuted = false;
+        appState.isPlayingMusic = true;
+      } catch (e) {
+        console.warn("Unmute failed", e);
+      }
+      updateMusicUI();
     }
 
     function playCurrentSong() {
@@ -1508,6 +2155,18 @@
 
       if (appState.ytPlayer && appState.ytReady && typeof appState.ytPlayer.loadVideoById === "function") {
         appState.ytPlayer.loadVideoById(currentTrack.id);
+        if (appState.isUnlocked) {
+          try {
+            appState.ytPlayer.unMute();
+            appState.ytPlayer.setVolume(100);
+            appState.isMuted = false;
+          } catch (e) {}
+        } else {
+          try {
+            appState.ytPlayer.mute();
+            appState.isMuted = true;
+          } catch (e) {}
+        }
         appState.ytPlayer.playVideo();
         appState.isPlayingMusic = true;
       }
@@ -1516,6 +2175,12 @@
     function togglePlayPause() {
       if (!appState.ytPlayer || !appState.ytReady) return;
 
+      // If currently muted on lockscreen and user clicks to hear music, unmute and play!
+      if (appState.isMuted) {
+        unmuteAndPlay();
+        return;
+      }
+
       if (appState.isPlayingMusic) {
         appState.ytPlayer.pauseVideo();
         appState.isPlayingMusic = false;
@@ -1523,6 +2188,7 @@
         appState.ytPlayer.playVideo();
         appState.isPlayingMusic = true;
       }
+      updateMusicUI();
     }
 
     function playNextSong() {
@@ -1532,8 +2198,30 @@
 
     function updateMusicUI() {
       const track = CONFIG.PLAYLIST[appState.currentSongIndex];
-      document.getElementById("musicBadge").textContent = `Our Song #${appState.currentSongIndex + 1}`;
-      document.getElementById("musicTitle").textContent = track.title;
+      const badge = document.getElementById("musicBadge");
+      const title = document.getElementById("musicTitle");
+      const toggleBtn = document.getElementById("musicToggleBtn");
+      const widget = document.getElementById("musicWidget");
+
+      if (!badge || !title || !toggleBtn || !widget) return;
+
+      if (!appState.isUnlocked && appState.isMuted) {
+        badge.textContent = "🔇 Playing Muted";
+        title.textContent = "Unmutes with password ✨";
+        toggleBtn.textContent = "🔇";
+        toggleBtn.title = "Currently playing muted. Un-mutes when you enter the password!";
+        widget.classList.remove("is-playing");
+      } else {
+        badge.textContent = `Our Song #${appState.currentSongIndex + 1}`;
+        title.textContent = track ? track.title : "Our Song";
+        toggleBtn.textContent = appState.isPlayingMusic ? "⏸️" : "▶️";
+        toggleBtn.title = appState.isPlayingMusic ? "Pause" : "Play";
+        if (appState.isPlayingMusic) {
+          widget.classList.add("is-playing");
+        } else {
+          widget.classList.remove("is-playing");
+        }
+      }
     }
 
     /* ==========================================================================
@@ -1602,12 +2290,14 @@
         appState.isUnlocked = true;
         fireBigLoveConfetti();
 
-        // Start playing YouTube music
-        playCurrentSong();
+        // Unmute the music seamlessly upon entering password!
+        unmuteAndPlay();
 
         // Smooth transition
         document.getElementById("lockscreen").classList.add("hidden-lock");
         document.getElementById("mainApp").classList.add("revealed");
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
 
         setTimeout(() => {
           document.getElementById("lockscreen").style.display = "none";
